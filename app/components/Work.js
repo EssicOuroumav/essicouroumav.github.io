@@ -9,74 +9,106 @@ import { SectionHead } from "./Sections";
 
 const featured = projects.filter((p) => p.featured);
 const mainLink = (p) => p.links.site || p.links.figma || p.links.video || p.links.behance || p.links.github;
-const thumbOf = (p) => (p.visual === "video" ? p.poster : p.image || p.logo);
 
-// Accueil : index des projets. Au survol d'une ligne, un aperçu flotte et suit le curseur.
-export function ProjectIndex() {
+// Accueil : galerie de projets. Sur ordinateur, la section reste fixe et les cartes défilent
+// horizontalement au rythme du défilement vertical ; sur mobile, glissement horizontal natif.
+export function ProjectShowcase() {
   const { t, tr } = useLang();
-  const [hover, setHover] = useState(-1);
-  const preview = useRef(null);
-  const listRef = useRef(null);
+  const sectionRef = useRef(null);
+  const trackRef = useRef(null);
+  const barRef = useRef(null);
+  const [active, setActive] = useState(0);
+  const [pinned, setPinned] = useState(false);
 
   useEffect(() => {
-    const list = listRef.current;
-    const el = preview.current;
-    if (!list || !el || !matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-    const p = { x: 0, y: 0 };
-    const c = { x: 0, y: 0 };
+    const section = sectionRef.current;
+    const track = trackRef.current;
+    if (!section || !track) return;
+    const desktop = matchMedia("(min-width: 901px)");
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
-    const onMove = (e) => {
-      const r = list.getBoundingClientRect();
-      p.x = e.clientX - r.left;
-      p.y = e.clientY - r.top;
+    let distance = 0;
+
+    const measure = () => {
+      const on = desktop.matches && !reduce;
+      setPinned(on);
+      if (!on) {
+        section.style.height = "";
+        track.style.transform = "";
+        return;
+      }
+      distance = Math.max(0, track.scrollWidth - window.innerWidth + 48);
+      section.style.height = `${window.innerHeight + distance}px`;
     };
-    const tick = () => {
-      const dx = p.x - c.x;
-      c.x += dx * 0.12;
-      c.y += (p.y - c.y) * 0.12;
-      el.style.transform = `translate(${c.x}px, ${c.y}px) translate(-50%, -50%) rotate(${Math.max(-8, Math.min(8, dx * 0.04))}deg)`;
-      raf = requestAnimationFrame(tick);
+
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        if (!desktop.matches || reduce) return;
+        const r = section.getBoundingClientRect();
+        const progress = Math.min(1, Math.max(0, -r.top / Math.max(1, distance)));
+        track.style.transform = `translate3d(${-progress * distance}px, 0, 0)`;
+        if (barRef.current) barRef.current.style.transform = `scaleX(${progress})`;
+        setActive(Math.min(featured.length - 1, Math.round(progress * (featured.length - 1))));
+      });
     };
-    list.addEventListener("pointermove", onMove);
-    raf = requestAnimationFrame(tick);
+
+    measure();
+    onScroll();
+    window.addEventListener("resize", measure);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    desktop.addEventListener("change", measure);
     return () => {
-      list.removeEventListener("pointermove", onMove);
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("scroll", onScroll);
+      desktop.removeEventListener("change", measure);
       cancelAnimationFrame(raf);
     };
   }, []);
 
   return (
-    <section id="work" className="sec">
-      <SectionHead index={1} kicker={t.workKicker} title={t.workH} intro={t.workP}>
-        <a className="btn line" href={withBase("/projets/")}>
-          {t.allProjects.replace("{n}", projects.length)} <ArrowUpRight size={18} aria-hidden="true" />
-        </a>
-      </SectionHead>
-      <div className="pindex-wrap" ref={listRef} onMouseLeave={() => setHover(-1)}>
-      <ol className="pindex">
-        {featured.map((p, i) => {
-          const href = mainLink(p);
-          return (
-            <li key={p.key} className={hover === i ? "is-active" : ""} onMouseEnter={() => setHover(i)}>
-              <a href={href} target="_blank" rel="noopener noreferrer" data-cursor="view">
-                <span className="pi-num mono">{String(i + 1).padStart(2, "0")}</span>
-                <img className="pi-thumb" src={withBase(thumbOf(p))} alt="" width="160" height="120" loading="lazy" />
-                <span className="pi-title">{tr(p.title)}</span>
-                <span className="pi-client">{p.client}</span>
-                <span className="pi-cat mono">{t.filters[p.category]}</span>
-                <span className="pi-arrow">
-                  <ArrowUpRight size={22} aria-hidden="true" />
-                </span>
-                <span className="sr-only"> {t.newTab}</span>
-              </a>
-            </li>
-          );
-        })}
-      </ol>
-        <div className={hover >= 0 ? "pi-preview is-on" : "pi-preview"} ref={preview} aria-hidden="true">
-          {featured.map((p, i) => (
-            <img key={p.key} className={hover === i ? "is-on" : ""} src={withBase(thumbOf(p))} alt="" loading="lazy" width="640" height="480" />
-          ))}
+    <section id="work" className={pinned ? "showcase is-pinned" : "showcase"} ref={sectionRef}>
+      <div className="showcase-sticky">
+        <div className="showcase-head">
+          <SectionHead index={1} kicker={t.workKicker} title={t.workH} intro={t.workP}>
+            <a className="btn line" href={withBase("/projets/")}>
+              {t.allProjects.replace("{n}", projects.length)} <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
+          </SectionHead>
+        </div>
+        <div className="showcase-track" ref={trackRef}>
+          {featured.map((p, i) => {
+            const title = tr(p.title);
+            const href = mainLink(p);
+            return (
+              <article key={p.key} className={active === i ? "sc-card is-active" : "sc-card"}>
+                <div className="sc-media">
+                  <ProjectVisual p={p} title={title} hoverTarget=".sc-card" />
+                  {href && (
+                    <a className="tile-hit" href={href} target="_blank" rel="noopener noreferrer" data-cursor="view" aria-label={`${t.open} : ${title} ${t.newTab}`} />
+                  )}
+                </div>
+                <div className="sc-caption glass">
+                  <span className="sc-num mono">{String(i + 1).padStart(2, "0")}</span>
+                  <div className="sc-text">
+                    <p className="mono">
+                      {p.client} · {t.filters[p.category]}
+                    </p>
+                    <h3>{title}</h3>
+                  </div>
+                  <ProjectLinks links={p.links} />
+                </div>
+              </article>
+            );
+          })}
+        </div>
+        <div className="showcase-progress" aria-hidden="true">
+          <span className="mono">
+            {String(active + 1).padStart(2, "0")} / {String(featured.length).padStart(2, "0")}
+          </span>
+          <i>
+            <b ref={barRef} />
+          </i>
         </div>
       </div>
     </section>

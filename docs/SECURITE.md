@@ -54,7 +54,7 @@ Aucune route ne reçoit de donnée : pas de formulaire (`form-action 'none'` dan
   - prixci (13 commits), ivert (1), kateni (92) : **0 fuite**. Les fichiers `*.command` de kateni ne contiennent aucune valeur : ils lancent des scripts qui lisent la clé depuis le presse-papiers.
   - Markodience (91 commits) : 3 alertes = mot de passe de comptes de test jetables `@example.com` dans `scripts/rls-smoke.mjs` et `scripts/payments-race.mjs`. Faux positif si ce mot de passe ne sert nulle part ailleurs : **à confirmer par le propriétaire**.
   - ong-aicha-site (37 commits) : 1 alerte = fausse clé `sk_live_…` dans `tests/errors.test.ts` (test du masquage des erreurs). Faux positif.
-  - Passage en public : seulement après l'accord explicite du propriétaire, dépôt par dépôt.
+  - Passage en public : fait le 2026-11-07 à la demande écrite du propriétaire, après un second audit gitleaks (résultat identique) et une recherche de fichiers sensibles dans l'historique (`.env`, sauvegardes, exports SQL avec données : aucun). Les `docs/SECURITE.md` de Markodience et ONG AICHA sont désormais publics : ils décrivent les protections, pas de secret.
 
 ## 7. Non couvert
 Comportement des services tiers (Behance, WhatsApp, GitHub), essai d'intrusion, rendu sur le vrai téléphone du propriétaire.
