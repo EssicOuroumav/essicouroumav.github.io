@@ -15,6 +15,8 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages (`ciss
 - Les couvertures Behance en `max_808` sont petites ; la version `source` est l'original non recadré : recadrer avec les valeurs encodées en base64 dans le nom du fichier (`crop,l,h,x,y`).
 - Fond nuages assombri en mode sombre par `invert(1)` + faible opacité, pas d'image séparée.
 
+- 2026-11-07 : le propriétaire ne rend **aucun dépôt de projet public pour l'instant** ; les cartes gardent seulement les liens vers les sites en ligne et Behance.
+
 ## À valider par le propriétaire
 - Descriptions déduites : Kateni (« analyse et prédiction de matchs de football », d'après les fichiers du dépôt), Versatile Branding (« dont Nova Dermax », d'après la couverture), image du service Motion (couvertures e-books en attendant une vraie vignette vidéo).
 - Les captures des sites sont celles du 2026-10-30.
