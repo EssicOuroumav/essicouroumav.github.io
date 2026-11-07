@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ArrowUpRight, Globe, PlayCircle } from "lucide-react";
 import { categories, profile, projects } from "../data";
 import { useLang } from "../i18n";
+import { withBase } from "../base";
 import { BrandIcon } from "./ui";
 
 // N'affiche que les filtres qui ont au moins un projet.
@@ -36,14 +37,14 @@ function Card({ p }) {
   const visual =
     p.visual === "logo" ? (
       <div className="card-media logo" style={{ "--tint": p.tint }}>
-        <img src={p.logo} alt={`Logo ${title}`} loading="lazy" width="400" height="400" />
+        <img src={withBase(p.logo)} alt={`Logo ${title}`} loading="lazy" width="400" height="400" />
       </div>
     ) : (
       <div className="card-media">
-        <img src={p.image} alt={title} loading="lazy" width="1400" height="1094" />
+        <img src={withBase(p.image)} alt={title} loading="lazy" width="1400" height="1094" />
         {p.logo && (
           <span className="card-logo">
-            <img src={p.logo} alt="" width="400" height="400" loading="lazy" />
+            <img src={withBase(p.logo)} alt="" width="400" height="400" loading="lazy" />
           </span>
         )}
       </div>

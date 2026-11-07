@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useLang } from "../i18n";
+import { withBase } from "../base";
 import { LangSwitch, ThemeToggle } from "./ui";
 
 const anchors = ["#services", "#work", "#tools", "#journey"];
@@ -19,23 +20,23 @@ export default function Header() {
   return (
     <header className="top">
       <div className="bar">
-        <a href="/#top" className="brand" onClick={() => setOpen(false)}>
+        <a href={withBase("/#top")} className="brand" onClick={() => setOpen(false)}>
           Cisse<span>Vamourou</span>
         </a>
         <nav className={open ? "nav open" : "nav"} id="main-nav">
           {anchors.map((href, i) => (
-            <a key={href} href={`/${href}`} onClick={() => setOpen(false)}>
+            <a key={href} href={withBase(`/${href}`)} onClick={() => setOpen(false)}>
               {t.nav[i]}
             </a>
           ))}
-          <a className="btn solid sm nav-cta" href="/#contact" onClick={() => setOpen(false)}>
+          <a className="btn solid sm nav-cta" href={withBase("/#contact")} onClick={() => setOpen(false)}>
             {t.contact}
           </a>
         </nav>
         <div className="actions">
           <LangSwitch />
           <ThemeToggle />
-          <a className="btn solid sm bar-cta" href="/#contact">
+          <a className="btn solid sm bar-cta" href={withBase("/#contact")}>
             {t.contact}
           </a>
           <button

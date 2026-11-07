@@ -76,7 +76,7 @@ body::before {
   position: absolute;
   inset: 0 0 auto 0;
   height: 1600px;
-  background: url("/images/clouds.jpg") center top / cover no-repeat;
+  background: var(--clouds) center top / cover no-repeat;
   opacity: var(--clouds-opacity);
   filter: var(--clouds-filter);
   z-index: -2;

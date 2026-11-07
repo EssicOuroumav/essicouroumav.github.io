@@ -1,6 +1,7 @@
 "use client";
 import { ArrowLeft } from "lucide-react";
 import { profile } from "../data";
+import { withBase } from "../base";
 import { useLang } from "../i18n";
 import Header from "./Header";
 import { Footer } from "./Sections";
@@ -43,7 +44,7 @@ export function LegalPage() {
           </section>
         ))}
         <p>
-          <a className="btn" href="/">
+          <a className="btn" href={withBase("/")}>
             <ArrowLeft size={18} aria-hidden="true" /> {t.backHome}
           </a>
         </p>
@@ -62,7 +63,7 @@ export function NotFoundPage() {
         <h1>404</h1>
         <p>{lang === "fr" ? "Cette page n'existe pas ou a été déplacée." : "This page does not exist or has moved."}</p>
         <p>
-          <a className="btn solid" href="/">
+          <a className="btn solid" href={withBase("/")}>
             <ArrowLeft size={18} aria-hidden="true" /> {t.backHome}
           </a>
         </p>

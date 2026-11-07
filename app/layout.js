@@ -2,6 +2,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "./data";
 import { LangProvider } from "./i18n";
+import { withBase } from "./base";
 
 const manrope = Manrope({ subsets: ["latin"], display: "swap", variable: "--font-manrope" });
 
@@ -10,20 +11,19 @@ const description =
   "Portfolio de Cisse Vamourou, designer graphique et créateur de contenus à Abidjan : identités visuelles, UI/UX, sites et applications web, motion design et gestion des réseaux sociaux.";
 
 export const metadata = {
-  metadataBase: new URL(SITE_URL),
   title,
   description,
-  alternates: { canonical: "/" },
+  alternates: { canonical: `${SITE_URL}/` },
   openGraph: {
     type: "website",
-    url: "/",
+    url: `${SITE_URL}/`,
     title,
     description,
     locale: "fr_FR",
     alternateLocale: ["en_US"],
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Cisse Vamourou, designer graphique" }],
+    images: [{ url: `${SITE_URL}/og.jpg`, width: 1200, height: 630, alt: "Cisse Vamourou, designer graphique" }],
   },
-  twitter: { card: "summary_large_image", title, description, images: ["/og.jpg"] },
+  twitter: { card: "summary_large_image", title, description, images: [`${SITE_URL}/og.jpg`] },
 };
 
 export const viewport = {
@@ -58,7 +58,7 @@ export default function RootLayout({ children }) {
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body>
+      <body style={{ "--clouds": `url("${withBase("/images/clouds.jpg")}")` }}>
         <LangProvider>{children}</LangProvider>
       </body>
     </html>

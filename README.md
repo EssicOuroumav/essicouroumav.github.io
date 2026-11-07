@@ -1,7 +1,7 @@
 # Portfolio de Cisse Vamourou
 
 Designer graphique, UI/UX, web, motion design et gestion des réseaux sociaux, Abidjan.
-En ligne : https://essicouroumav.github.io
+En ligne : https://essicouroumav.github.io/Portfolio/
 
 ## Modifier le contenu
 Tout est dans `app/data.js` (projets, services, outils, parcours) et `app/dict.js` (textes de l'interface), en français et en anglais.

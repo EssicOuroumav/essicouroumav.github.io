@@ -1,8 +1,9 @@
 import { LegalPage } from "../components/Simple";
+import { SITE_URL } from "../data";
 
 export const metadata = {
   title: "Mentions légales · Cisse Vamourou",
-  alternates: { canonical: "/mentions-legales/" },
+  alternates: { canonical: `${SITE_URL}/mentions-legales/` },
 };
 
 export default function Page() {

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ArrowUpRight, Mail, MapPin, X } from "lucide-react";
 import { certifications, journey, profile, projects, services, tools } from "../data";
 import { useLang } from "../i18n";
+import { withBase } from "../base";
 import { BrandIcon } from "./ui";
 
 const years = new Date().getFullYear() - profile.since;
@@ -45,7 +46,7 @@ export function Hero() {
       </div>
       <div className="hero-photo">
         <div className="photo">
-          <img src={profile.photo} alt={profile.name} width="800" height="800" fetchPriority="high" />
+          <img src={withBase(profile.photo)} alt={profile.name} width="800" height="800" fetchPriority="high" />
         </div>
         {tools.map((tool, i) => (
           <span key={tool.key} className={`float f${i + 1}`} title={tool.name}>
@@ -108,7 +109,7 @@ export function Services() {
               </button>
               <div className="svc-body" id={`svc-${s.key}`} hidden={!isOpen}>
                 <p>{tr(s.desc)}</p>
-                <img src={s.image} alt="" loading="lazy" width="1400" height="1094" />
+                <img src={withBase(s.image)} alt="" loading="lazy" width="1400" height="1094" />
               </div>
             </li>
           );
@@ -212,7 +213,7 @@ export function Footer() {
       <span>
         © {new Date().getFullYear()} {profile.name} · {t.location}
       </span>
-      <a href="/mentions-legales/">{t.legal}</a>
+      <a href={withBase("/mentions-legales/")}>{t.legal}</a>
     </footer>
   );
 }

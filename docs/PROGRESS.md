@@ -1,6 +1,6 @@
 # Avancement : portfolio Cisse Vamourou
 
-Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages (publié d'abord sur `essicouroumav.github.io` le 2026-11-07, à la demande du propriétaire ; renommage en `cissevamourou` reporté).
+Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages (dépôt `EssicOuroumav/Portfolio`, adresse `essicouroumav.github.io/Portfolio/` (choix du propriétaire, 2026-11-07 ; pas de renommage du compte)).
 
 ## Fait
 - Lot 1 : socle Next.js figé, workflow GitHub Pages, `.gitignore`. `npm audit` : 2 alertes postcss (outil de build) corrigées par `overrides` sans montée majeure de Next.
