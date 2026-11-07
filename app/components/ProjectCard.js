@@ -87,7 +87,7 @@ export function GlassCard({ p, active = false }) {
       <div className="gcard-body">
         <h3>{title}</h3>
         <p>
-          {p.client}
+          {tr(p.client)}
           <i className="dot-sep" aria-hidden="true" />
           {t.filters[p.category]}
         </p>

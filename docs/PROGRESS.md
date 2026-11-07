@@ -17,7 +17,12 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 
 - v5 (2026-11-08) : police Inter partout (titres réduits, fin des majuscules larges), glassmorphism clair façon iOS dans les violets et lavandes des références du propriétaire (fond lavande à formes diagonales, hero dans une grande fenêtre de verre), cartes de projets façon « carte de destination » (visuel plein cadre, fondu teinté par la couleur dominante du projet calculée dans `app/tints.js`, bouton en verre « Voir le projet », icônes Code / Figma / Behance), carrousel à l'accueil avec la carte centrale surélevée, grille de ces cartes sur `/projets/`.
 
+- v6 (2026-11-08) : palette tirée de la tenue du propriétaire (veste #161929, cravate bleu marine #26335c, chemise blanche) ; 6 objets 3D des métiers du numérique (ordinateur, Figma, caméra, palette, mégaphone, téléphone ; 3dicons, CC0) qui flottent et suivent le curseur en profondeur ; projet AquaPay ajouté à la une (captures de l'application mobile en priorité, à la demande du propriétaire, plus le site) ; Nova Dermax = branding de services esthétiques ; Adyen, MTN Skills Academy, Portail ODC = projets personnels ; mentions légales : fondateur de Civ'Art (Port-Bouët), d'après le dossier MARKETING DIGITAL.
+
 ## Erreurs et décisions
+- Captures d'applications Expo : l'émulateur Android est resté hors ligne (adb) puis son service `package` a planté ; Xcode absent, donc pas de simulateur iOS. Contournement pour AquaPay : mode web d'Expo + un relais local (scratchpad, hors du projet AquaPay) qui remplace les appels natifs de `expo-secure-store` par un stockage en mémoire. Écrans publics seulement (connexion, inscription, aide) : la connexion enverrait des identifiants à un Supabase en ligne, donc pas de connexion. PrixCI : non capturé (react-native-web absent et émulateur instable) ; Expo a remplacé Expo Go 58 par 57 sur l'émulateur.
+- Kateni : application Streamlit privée (redirection vers `share.streamlit.io/-/auth/app`) ; capture impossible sans le compte du propriétaire. Le lien avec jeton `?s=` n'est enregistré nulle part.
+- Capture sans interface de Chrome en format téléphone : largeur de mise en page fausse (contenu coupé) ; utiliser le navigateur intégré réglé sur 390×844.
 - `scripts/check.mjs` a bloqué un « • » placé dans la ligne d'informations des cartes : remplacé par un point dessiné en CSS (`.dot-sep`). Le contrôle automatique a fait son travail.
 - Section fixe (`position: sticky`) qui disparaît au défilement : un ancêtre en `overflow: hidden` (ici `main` puis `body`, devenu conteneur de défilement parce que `html` avait `overflow-x: clip`) casse `sticky`. Utiliser `overflow-x: clip` partout, jamais `hidden`, au-dessus d'un élément `sticky`.
 - Texte en dégradé (`background-clip: text`) coupé : les lettres qui débordent de la boîte n'ont pas de fond. `width: max-content` sur le mot en dégradé.
@@ -40,5 +45,5 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 - Les captures des sites sont celles du 2026-10-30.
 
 ## Reste à faire
-- Propriétaire : vérifier les titres des vidéos (déduits des noms de fichiers : Adyen, MTN Skills Academy, Portail ODC présentés comme projets de motion), rendre les fichiers Figma consultables par lien (sinon le bouton Figma demandera un accès), captures de PrixCI et Kateni, AquaWater (logo, captures), dépôt Kerya, nom exact du projet « Eden ».
+- Propriétaire : captures de Kateni (application privée) et de PrixCI, dépôt Kerya, nom exact du projet « Eden ». Fait : partage Figma public, titres des vidéos confirmés, AquaWater = AquaPay.
 - Assistant : audit gitleaks des dépôts à rendre publics, puis publication, puis Lighthouse ×3 sur l'URL publiée.

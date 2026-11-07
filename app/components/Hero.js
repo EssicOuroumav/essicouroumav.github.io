@@ -7,6 +7,16 @@ import { withBase } from "../base";
 
 const heroCards = projects.filter((p) => p.featured).slice(0, 5);
 
+// Objets 3D des métiers du numérique (rendus 3dicons, licence CC0), avec leur profondeur pour la parallaxe.
+const objects3d = [
+  { name: "computer", depth: 1.2 },
+  { name: "figma", depth: 0.8 },
+  { name: "video-camera", depth: 1.5 },
+  { name: "color-palette", depth: 0.6 },
+  { name: "megaphone", depth: 1 },
+  { name: "mobile", depth: 1.3 },
+];
+
 // Le portrait, l'œil, le curseur de « regard » et la flèche du cercle suivent le pointeur.
 // Les valeurs sont lissées (lerp) puis écrites en variables CSS : aucun rendu React à chaque mouvement.
 function usePointerFollow(rootRef, gazeRef, labels) {
@@ -80,6 +90,12 @@ export default function Hero() {
       <div className="hero-light" aria-hidden="true" />
       <div className="hero-word" aria-hidden="true">
         VAMOUROU
+      </div>
+
+      <div className="hero-3d" aria-hidden="true">
+        {objects3d.map((o) => (
+          <img key={o.name} className={`o3d o3d-${o.name}`} src={withBase(`/images/3d/${o.name}.webp`)} alt="" width="360" height="360" style={{ "--depth": o.depth }} />
+        ))}
       </div>
 
       <div className="hero-portrait" aria-hidden="true">
@@ -169,9 +185,9 @@ export default function Hero() {
             <a key={p.key} className="glass-card" href={href} target="_blank" rel="noopener noreferrer">
               <span className="gc-text">
                 <b>{tr(p.title)}</b>
-                <small>{p.client}</small>
+                <small>{tr(p.client)}</small>
               </span>
-              <img src={withBase(thumb)} alt="" width="400" height="300" loading="lazy" />
+              <img src={withBase(thumb)} alt="" width="400" height="300" />
               <span className="gc-go">{t.go}</span>
             </a>
           );
