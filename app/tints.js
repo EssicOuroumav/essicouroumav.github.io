@@ -1,6 +1,7 @@
 // Teinte de chaque carte de projet : couleur dominante du bas de son visuel, assombrie
 // pour garder un texte blanc lisible (calculée une fois depuis les images de public/).
 export const tints = {
+  "aquapay-web": "#1f3b65",
   "aquapay": "#1f3b65",
   "markodience": "#233661",
   "coupure-af": "#2b3459",
