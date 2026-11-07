@@ -1,127 +1,96 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { categories, projects } from "../data";
 import { useLang } from "../i18n";
 import { withBase } from "../base";
-import { ProjectLinks, ProjectVisual } from "./ProjectCard";
+import { GlassCard } from "./ProjectCard";
 import { SectionHead } from "./Sections";
 
 const featured = projects.filter((p) => p.featured);
-const mainLink = (p) => p.links.site || p.links.figma || p.links.video || p.links.behance || p.links.github;
 
-// Accueil : galerie de projets. Sur ordinateur, la section reste fixe et les cartes défilent
-// horizontalement au rythme du défilement vertical ; sur mobile, glissement horizontal natif.
-export function ProjectShowcase() {
-  const { t, tr } = useLang();
-  const sectionRef = useRef(null);
+// Accueil : carrousel de cartes. La carte la plus proche du centre est surélevée et agrandie.
+export function ProjectCarousel() {
+  const { t } = useLang();
   const trackRef = useRef(null);
-  const barRef = useRef(null);
   const [active, setActive] = useState(0);
-  const [pinned, setPinned] = useState(false);
 
   useEffect(() => {
-    const section = sectionRef.current;
     const track = trackRef.current;
-    if (!section || !track) return;
-    const desktop = matchMedia("(min-width: 901px)");
-    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!track) return;
     let raf = 0;
-    let distance = 0;
-
-    const measure = () => {
-      const on = desktop.matches && !reduce;
-      setPinned(on);
-      if (!on) {
-        section.style.height = "";
-        track.style.transform = "";
-        return;
-      }
-      distance = Math.max(0, track.scrollWidth - window.innerWidth + 48);
-      section.style.height = `${window.innerHeight + distance}px`;
+    const update = () => {
+      const mid = track.scrollLeft + track.clientWidth / 2;
+      let best = 0;
+      let dist = Infinity;
+      [...track.children].forEach((el, i) => {
+        const d = Math.abs(el.offsetLeft + el.offsetWidth / 2 - mid);
+        if (d < dist) {
+          dist = d;
+          best = i;
+        }
+      });
+      setActive(best);
     };
-
     const onScroll = () => {
       cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        if (!desktop.matches || reduce) return;
-        const r = section.getBoundingClientRect();
-        const progress = Math.min(1, Math.max(0, -r.top / Math.max(1, distance)));
-        track.style.transform = `translate3d(${-progress * distance}px, 0, 0)`;
-        if (barRef.current) barRef.current.style.transform = `scaleX(${progress})`;
-        setActive(Math.min(featured.length - 1, Math.round(progress * (featured.length - 1))));
-      });
+      raf = requestAnimationFrame(update);
     };
-
-    measure();
-    onScroll();
-    window.addEventListener("resize", measure);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    desktop.addEventListener("change", measure);
+    // Démarre sur la deuxième carte pour montrer d'emblée une carte de chaque côté.
+    const start = track.children[1];
+    if (start) track.scrollLeft = start.offsetLeft + start.offsetWidth / 2 - track.clientWidth / 2;
+    update();
+    track.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
     return () => {
-      window.removeEventListener("resize", measure);
-      window.removeEventListener("scroll", onScroll);
-      desktop.removeEventListener("change", measure);
+      track.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(raf);
     };
   }, []);
 
+  const go = (dir) => {
+    const track = trackRef.current;
+    const next = track?.children[Math.max(0, Math.min(featured.length - 1, active + dir))];
+    if (next) track.scrollTo({ left: next.offsetLeft + next.offsetWidth / 2 - track.clientWidth / 2, behavior: "smooth" });
+  };
+
   return (
-    <section id="work" className={pinned ? "showcase is-pinned" : "showcase"} ref={sectionRef}>
-      <div className="showcase-sticky">
-        <div className="showcase-head">
-          <SectionHead index={1} kicker={t.workKicker} title={t.workH} intro={t.workP}>
-            <a className="btn line" href={withBase("/projets/")}>
-              {t.allProjects.replace("{n}", projects.length)} <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
-          </SectionHead>
+    <section id="work" className="sec">
+      <SectionHead index={1} kicker={t.workKicker} title={t.workH} intro={t.workP}>
+        <a className="btn line" href={withBase("/projets/")}>
+          {t.allProjects.replace("{n}", projects.length)} <ArrowUpRight size={18} aria-hidden="true" />
+        </a>
+      </SectionHead>
+      <div className="carousel">
+        <div className="carousel-track" ref={trackRef}>
+          {featured.map((p, i) => (
+            <div key={p.key} className="carousel-slide">
+              <GlassCard p={p} active={active === i} />
+            </div>
+          ))}
         </div>
-        <div className="showcase-track" ref={trackRef}>
-          {featured.map((p, i) => {
-            const title = tr(p.title);
-            const href = mainLink(p);
-            return (
-              <article key={p.key} className={active === i ? "sc-card is-active" : "sc-card"}>
-                <div className="sc-media">
-                  <ProjectVisual p={p} title={title} hoverTarget=".sc-card" />
-                  {href && (
-                    <a className="tile-hit" href={href} target="_blank" rel="noopener noreferrer" data-cursor="view" aria-label={`${t.open} : ${title} ${t.newTab}`} />
-                  )}
-                </div>
-                <div className="sc-caption glass">
-                  <span className="sc-num mono">{String(i + 1).padStart(2, "0")}</span>
-                  <div className="sc-text">
-                    <p className="mono">
-                      {p.client} · {t.filters[p.category]}
-                    </p>
-                    <h3>{title}</h3>
-                  </div>
-                  <ProjectLinks links={p.links} />
-                </div>
-              </article>
-            );
-          })}
-        </div>
-        <div className="showcase-progress" aria-hidden="true">
+        <div className="carousel-nav">
+          <button type="button" className="icon-btn" onClick={() => go(-1)} aria-label={t.prev} disabled={active === 0}>
+            <ChevronLeft size={20} aria-hidden="true" />
+          </button>
           <span className="mono">
             {String(active + 1).padStart(2, "0")} / {String(featured.length).padStart(2, "0")}
           </span>
-          <i>
-            <b ref={barRef} />
-          </i>
+          <button type="button" className="icon-btn" onClick={() => go(1)} aria-label={t.next} disabled={active === featured.length - 1}>
+            <ChevronRight size={20} aria-hidden="true" />
+          </button>
         </div>
       </div>
     </section>
   );
 }
 
-// Page Projets : filtres + grille éditoriale (tailles alternées), vidéos lues au survol.
+// Page Projets : filtres + grille de cartes.
 const used = categories.filter((c) => projects.some((p) => p.category === c));
-// Motif de largeurs (sur 12 colonnes) répété le long de la grille.
-const pattern = [7, 5, 4, 4, 4, 5, 7, 6, 6];
 
 export function ProjectsGrid() {
-  const { t, tr } = useLang();
+  const { t } = useLang();
   const [filter, setFilter] = useState("all");
 
   useEffect(() => {
@@ -155,33 +124,10 @@ export function ProjectsGrid() {
           );
         })}
       </div>
-      <div className="bento">
-        {shown.map((p, i) => {
-          const title = tr(p.title);
-          const href = mainLink(p);
-          const span = pattern[i % pattern.length];
-          return (
-            <article key={p.key} className={`tile span-${span}`}>
-              <div className="tile-media">
-                <ProjectVisual p={p} title={title} hoverTarget=".tile" />
-                {href && (
-                  <a className="tile-hit" href={href} target="_blank" rel="noopener noreferrer" data-cursor="view" aria-label={`${t.open} : ${title} ${t.newTab}`} />
-                )}
-                <span className="tile-num mono">{String(projects.indexOf(p) + 1).padStart(2, "0")}</span>
-              </div>
-              <div className="tile-caption">
-                <div>
-                  <p className="tile-meta mono">
-                    {p.client} · {t.filters[p.category]}
-                  </p>
-                  <h3>{title}</h3>
-                  <p className="tile-desc">{tr(p.desc)}</p>
-                </div>
-                <ProjectLinks links={p.links} />
-              </div>
-            </article>
-          );
-        })}
+      <div className="cards-grid">
+        {shown.map((p) => (
+          <GlassCard key={p.key} p={p} />
+        ))}
       </div>
     </section>
   );

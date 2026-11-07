@@ -1,5 +1,6 @@
 "use client";
-import { Globe, PlayCircle } from "lucide-react";
+import { ChevronRight, Globe, PlayCircle } from "lucide-react";
+import { tints } from "../tints";
 import { useLang } from "../i18n";
 import { withBase } from "../base";
 import { BrandIcon, LoopVideo } from "./ui";
@@ -63,5 +64,50 @@ export function ProjectLinks({ links }) {
         </a>
       ))}
     </div>
+  );
+}
+
+// Carte de projet façon « carte de destination » : visuel plein cadre, fondu teinté par la couleur
+// dominante du projet, titre, ligne d'informations et bouton en verre ; liens secondaires en icônes.
+export function GlassCard({ p, active = false }) {
+  const { t, tr } = useLang();
+  const title = tr(p.title);
+  const main = p.links.site || p.links.figma || p.links.video || p.links.behance || p.links.github;
+  const extras = [
+    p.links.github && main !== p.links.github && { href: p.links.github, label: t.linkCode, icon: <BrandIcon name="github" size={16} color="currentColor" /> },
+    p.links.figma && main !== p.links.figma && { href: p.links.figma, label: t.linkFigma, icon: <BrandIcon name="figma" size={16} color="currentColor" /> },
+    p.links.behance && main !== p.links.behance && { href: p.links.behance, label: t.linkBehance, icon: <BrandIcon name="behance" size={16} color="currentColor" /> },
+  ].filter(Boolean);
+  return (
+    <article className={active ? "gcard is-active" : "gcard"} style={{ "--tint": tints[p.key] || p.tint || "#3b2463" }}>
+      <div className="gcard-media">
+        <ProjectVisual p={p} title={title} hoverTarget=".gcard" />
+      </div>
+      <div className="gcard-fade" aria-hidden="true" />
+      <div className="gcard-body">
+        <h3>{title}</h3>
+        <p>
+          {p.client}
+          <i className="dot-sep" aria-hidden="true" />
+          {t.filters[p.category]}
+        </p>
+        <div className="gcard-actions">
+          {main ? (
+            <a className="gcard-btn" href={main} target="_blank" rel="noopener noreferrer" data-cursor="view">
+              {t.open}
+              <ChevronRight size={18} aria-hidden="true" />
+              <span className="sr-only"> : {title} {t.newTab}</span>
+            </a>
+          ) : (
+            <span className="gcard-btn is-muted">{t.soon}</span>
+          )}
+          {extras.map((l) => (
+            <a key={l.href} className="gcard-icon" href={l.href} target="_blank" rel="noopener noreferrer" aria-label={`${l.label} : ${title} ${t.newTab}`} title={l.label}>
+              {l.icon}
+            </a>
+          ))}
+        </div>
+      </div>
+    </article>
   );
 }

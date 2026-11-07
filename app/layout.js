@@ -1,10 +1,9 @@
-import { Archivo, JetBrains_Mono, Manrope } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "./data";
 import { LangProvider } from "./i18n";
 
-const manrope = Manrope({ subsets: ["latin"], display: "swap", variable: "--font-sans" });
-const archivo = Archivo({ subsets: ["latin"], display: "swap", axes: ["wdth"], variable: "--font-display" });
+const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-sans" });
 const mono = JetBrains_Mono({ subsets: ["latin"], display: "swap", weight: ["400", "500"], variable: "--font-mono" });
 
 const title = "Cisse Vamourou · Designer graphique, UI/UX & Web";
@@ -29,8 +28,8 @@ export const metadata = {
 
 export const viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F5F5F7" },
-    { media: "(prefers-color-scheme: dark)", color: "#0B1220" },
+    { media: "(prefers-color-scheme: light)", color: "#EDE4F7" },
+    { media: "(prefers-color-scheme: dark)", color: "#1A1030" },
   ],
 };
 
@@ -54,7 +53,7 @@ const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t!==
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" className={`${manrope.variable} ${archivo.variable} ${mono.variable}`} suppressHydrationWarning>
+    <html lang="fr" className={`${inter.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
         <meta httpEquiv="Content-Security-Policy" content={csp} />
         <meta name="referrer" content="strict-origin-when-cross-origin" />

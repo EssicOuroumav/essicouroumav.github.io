@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import { ProjectShowcase } from "./components/Work";
+import { ProjectCarousel } from "./components/Work";
 import { Contact, Footer, Journey, Marquee, Skills, Tools } from "./components/Sections";
 import { Cursor, Motion } from "./components/ui";
 
@@ -13,7 +13,7 @@ export default function Home() {
       <main>
         <Hero />
         <Marquee />
-        <ProjectShowcase />
+        <ProjectCarousel />
         <Skills />
         <Tools />
         <Journey />

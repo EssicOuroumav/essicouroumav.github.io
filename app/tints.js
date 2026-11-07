@@ -1,0 +1,31 @@
+// Teinte de chaque carte de projet : couleur dominante du bas de son visuel, assombrie
+// pour garder un texte blanc lisible (calculée une fois depuis les images de public/).
+export const tints = {
+  "markodience": "#233661",
+  "coupure-af": "#2b3459",
+  "octobre-rose": "#59312b",
+  "ivert": "#265d39",
+  "obraise": "#5a3c2a",
+  "civart": "#580f75",
+  "ong-aicha": "#4a592b",
+  "verdi": "#4d592b",
+  "kerya": "#36592b",
+  "ivert-dechets": "#255f36",
+  "essic-fitness": "#59392b",
+  "prixci": "#285c3f",
+  "kateni": "#830004",
+  "vague-rose": "#691a35",
+  "spot-depigmentation": "#592b2b",
+  "ong-aicha-don": "#1b6932",
+  "nova-dermax-nouvel-an": "#3f2b59",
+  "nova-dermax-services": "#2b4d59",
+  "gomycode": "#310b79",
+  "odc-portail": "#2b592b",
+  "mtn-skills-academy": "#59592b",
+  "adyen": "#0e4f75",
+  "versatile-branding": "#681271",
+  "beauty-shop": "#2b4259",
+  "ekm": "#592b3a",
+  "print-medical": "#2b5938",
+  "covers": "#613423"
+};
