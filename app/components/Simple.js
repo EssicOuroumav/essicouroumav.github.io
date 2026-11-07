@@ -13,8 +13,8 @@ const legal = {
       ["Éditeur", `${profile.name}, personne physique, Abidjan (Côte d'Ivoire). Contact : ${profile.email}, ${profile.whatsappLabel}.`],
       ["Hébergement", "GitHub Pages, GitHub Inc., 88 Colton Street, San Francisco, CA 94107, États-Unis."],
       ["Données personnelles", "Ce site ne dépose aucun cookie, ne contient aucun formulaire et ne mesure pas l'audience. Seules vos préférences de langue et de thème sont gardées dans votre navigateur. Si vous m'écrivez par e-mail ou WhatsApp, vos messages servent uniquement à vous répondre."],
-      ["Propriété intellectuelle", "Les créations présentées sont des réalisations de Cisse Vamourou pour ses clients ou ses propres projets, montrées avec leur accord. Les marques et logos cités appartiennent à leurs titulaires. Logos d'outils : Simple Icons (CC0)."],
-      ["Crédits photo", "Fond nuageux : photo d'engin akyurt sur Unsplash (licence Unsplash)."],
+      ["Propriété intellectuelle", "Les créations présentées sont des réalisations de Cisse Vamourou pour ses clients ou ses propres projets, montrées avec leur accord. Les marques et logos cités appartiennent à leurs titulaires."],
+      ["Crédits", "Logos des outils : marques de leurs éditeurs (Anthropic, Figma, Blackmagic Design, Serif). Icônes d'interface : Lucide (ISC) et Simple Icons (CC0)."],
     ],
   },
   en: {
@@ -23,8 +23,8 @@ const legal = {
       ["Publisher", `${profile.name}, individual, Abidjan (Côte d'Ivoire). Contact: ${profile.email}, ${profile.whatsappLabel}.`],
       ["Hosting", "GitHub Pages, GitHub Inc., 88 Colton Street, San Francisco, CA 94107, United States."],
       ["Personal data", "This site sets no cookies, has no forms and runs no analytics. Only your language and theme preferences are kept in your browser. If you contact me by email or WhatsApp, your messages are used only to reply to you."],
-      ["Intellectual property", "The work shown was created by Cisse Vamourou for clients or personal projects and is displayed with their consent. Brands and logos belong to their owners. Tool logos: Simple Icons (CC0)."],
-      ["Photo credits", "Cloud background: photo by engin akyurt on Unsplash (Unsplash license)."],
+      ["Intellectual property", "The work shown was created by Cisse Vamourou for clients or personal projects and is displayed with their consent. Brands and logos belong to their owners."],
+      ["Credits", "Tool logos: trademarks of their publishers (Anthropic, Figma, Blackmagic Design, Serif). Interface icons: Lucide (ISC) and Simple Icons (CC0)."],
     ],
   },
 };

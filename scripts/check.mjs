@@ -41,7 +41,7 @@ const OUT = "out";
 if (!existsSync(OUT)) {
   fail("dossier out/ absent : lance npm run build");
 } else {
-  for (const f of ["index.html", "404.html", "mentions-legales/index.html", "sitemap.xml", "robots.txt", "og.jpg", "icon.png", "apple-icon.png", "images/clouds.jpg"]) {
+  for (const f of ["index.html", "404.html", "mentions-legales/index.html", "sitemap.xml", "robots.txt", "og.jpg", "icon.png", "apple-icon.png", "projets/index.html", "images/tools/figma.png"]) {
     if (!existsSync(join(OUT, f))) fail(`fichier attendu absent : out/${f}`);
   }
 
@@ -66,6 +66,7 @@ if (!existsSync(OUT)) {
   const emoji = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}•✓✔×]/u;
 
   for (const f of files) {
+    if (/\.(mp4|webm)$/.test(f) && statSync(f).size > 5 * 1024 * 1024) fail(`vidéo trop lourde (> 5 Mo) : ${f}`);
     if (f.endsWith(".map")) fail(`source map publiée : ${f}`);
     if (!/\.(html|txt|xml|js|css|json)$/.test(f)) continue;
     const text = readFileSync(f, "utf8");

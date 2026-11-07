@@ -1,7 +1,7 @@
 // Contenu du portfolio. Chaque texte a sa version française (fr) et anglaise (en).
 // Ajouter un projet = ajouter une entrée dans `projects` (image dans public/images/projects/).
 
-export const SITE_URL = "https://essicouroumav.github.io/Portfolio";
+export const SITE_URL = "https://essicouroumav.github.io";
 
 export const profile = {
   name: "Cisse Vamourou",
@@ -10,11 +10,13 @@ export const profile = {
   whatsappLabel: "+225 07 77 54 36 48",
   behance: "https://www.behance.net/essicouroumav",
   photo: "/images/cisse-vamourou.jpg",
-  since: 2021,
+  experienceYears: 3,
+  coords: "5.36° N · 4.01° W",
+  timeZone: "Africa/Abidjan",
 };
 
 // Filtres de la grille de projets, dans l'ordre d'affichage.
-export const categories = ["web", "uiux", "branding", "print", "motion"];
+export const categories = ["web", "uiux", "motion", "branding", "print"];
 
 export const services = [
   {
@@ -64,13 +66,16 @@ export const services = [
   },
 ];
 
-// visual : "shot" = capture ou visuel plein cadre ; "logo" = logo centré sur fond de couleur.
+// visual : "browser" = capture de site dans un cadre de navigateur ; "image" = visuel plein cadre ;
+// "brand" = logo sur fond de couleur ; "video" = boucle muette (video + poster dans public/videos/).
+// featured : affiché dans les volets de l'accueil (6 au maximum).
 export const projects = [
   {
     key: "markodience",
     title: "Markodience",
     category: "web",
-    visual: "shot",
+    visual: "browser",
+    featured: true,
     image: "/images/projects/markodience.jpg",
     logo: "/images/logos/markodience.png",
     tags: ["Next.js", "Supabase", "IA"],
@@ -84,7 +89,8 @@ export const projects = [
     key: "ong-aicha",
     title: "ONG AICHA",
     category: "web",
-    visual: "shot",
+    visual: "browser",
+    featured: true,
     image: "/images/projects/ong-aicha.jpg",
     logo: "/images/logos/ong-aicha.png",
     tags: ["Next.js", "Prisma", "FR / EN / AR"],
@@ -98,7 +104,8 @@ export const projects = [
     key: "kerya",
     title: "Kerya",
     category: "web",
-    visual: "shot",
+    visual: "browser",
+    featured: true,
     image: "/images/projects/kerya.jpg",
     tags: ["Vibe coding", "IA", "Vercel"],
     desc: {
@@ -111,8 +118,8 @@ export const projects = [
     key: "prixci",
     title: "PrixCI",
     category: "web",
-    visual: "logo",
-    tint: "#E8F5EC",
+    visual: "brand",
+    tint: "#1D6B3C",
     logo: "/images/logos/prixci.png",
     tags: ["React Native", "Expo", "Supabase"],
     desc: {
@@ -125,8 +132,8 @@ export const projects = [
     key: "ivert",
     title: "IVERT",
     category: "web",
-    visual: "logo",
-    tint: "#EEF3E6",
+    visual: "brand",
+    tint: "#3D5F2A",
     logo: "/images/logos/ivert.png",
     tags: ["Flutter", "TensorFlow Lite", "UI/UX"],
     desc: {
@@ -139,8 +146,8 @@ export const projects = [
     key: "kateni",
     title: "Kateni",
     category: "web",
-    visual: "logo",
-    tint: "#FBE9E9",
+    visual: "brand",
+    tint: "#A3111B",
     logo: "/images/logos/kateni.png",
     tags: ["Python", "Streamlit", "Data"],
     desc: {
@@ -153,7 +160,8 @@ export const projects = [
     key: "essic-fitness",
     title: "Essic Fitness+",
     category: "uiux",
-    visual: "shot",
+    visual: "image",
+    featured: true,
     image: "/images/projects/essic-fitness.jpg",
     tags: ["UI/UX", "Figma"],
     desc: {
@@ -166,7 +174,8 @@ export const projects = [
     key: "obraise",
     title: "O'Braisé chez Camara",
     category: "branding",
-    visual: "shot",
+    visual: "image",
+    featured: true,
     image: "/images/projects/obraise.jpg",
     tags: ["Identité visuelle", "Logo"],
     desc: {
@@ -179,7 +188,8 @@ export const projects = [
     key: "verdi",
     title: "VERDI",
     category: "branding",
-    visual: "shot",
+    visual: "image",
+    featured: true,
     image: "/images/projects/verdi.jpg",
     tags: ["Brand guidelines", "Identité"],
     desc: {
@@ -192,7 +202,7 @@ export const projects = [
     key: "versatile-branding",
     title: "Versatile Branding",
     category: "branding",
-    visual: "shot",
+    visual: "image",
     image: "/images/projects/versatile-branding.jpg",
     tags: ["Branding", "Système visuel"],
     desc: {
@@ -205,7 +215,7 @@ export const projects = [
     key: "beauty-shop",
     title: "The Beauty Shop Cosmetics",
     category: "branding",
-    visual: "shot",
+    visual: "image",
     image: "/images/projects/beauty-shop.jpg",
     tags: ["Packaging", "Branding"],
     desc: {
@@ -218,7 +228,7 @@ export const projects = [
     key: "ekm",
     title: "EKM Senteurs de Luxe",
     category: "print",
-    visual: "shot",
+    visual: "image",
     image: "/images/projects/ekm.jpg",
     tags: ["Flyers", "Campagne"],
     desc: {
@@ -231,7 +241,7 @@ export const projects = [
     key: "print-medical",
     title: { fr: "Supports print, formations médicales", en: "Print materials, medical training" },
     category: "print",
-    visual: "shot",
+    visual: "image",
     image: "/images/projects/print-medical.jpg",
     tags: ["Affiches", "Print"],
     desc: {
@@ -244,7 +254,7 @@ export const projects = [
     key: "covers",
     title: "Modern Cover Design Collection",
     category: "print",
-    visual: "shot",
+    visual: "image",
     image: "/images/projects/covers.jpg",
     tags: ["Couvertures", "E-books"],
     desc: {
@@ -256,10 +266,10 @@ export const projects = [
 ];
 
 export const tools = [
-  { key: "claude", name: "Claude Code", desc: { fr: "Développement web et applications avec l'IA", en: "AI-assisted web and app development" } },
-  { key: "figma", name: "Figma", desc: { fr: "Maquettes UI/UX et prototypes", en: "UI/UX mockups and prototypes" } },
-  { key: "affinitydesigner", name: "Affinity Designer", desc: { fr: "Logos, identités et illustrations vectorielles", en: "Logos, identities and vector illustration" } },
-  { key: "davinciresolve", name: "DaVinci Resolve", desc: { fr: "Montage vidéo et motion design", en: "Video editing and motion design" } },
+  { key: "claude", name: "Claude Code", logo: "/images/tools/claude.png", desc: { fr: "Développement de sites et d'applications avec l'IA", en: "AI-assisted website and app development" } },
+  { key: "figma", name: "Figma", logo: "/images/tools/figma.png", desc: { fr: "Maquettes UI/UX, prototypes et design systems", en: "UI/UX mockups, prototypes and design systems" } },
+  { key: "davinciresolve", name: "DaVinci Resolve", logo: "/images/tools/davinci-resolve.png", desc: { fr: "Montage vidéo, étalonnage et motion design", en: "Video editing, colour grading and motion design" } },
+  { key: "affinitydesigner", name: "Affinity Designer", logo: "/images/tools/affinity-designer.png", desc: { fr: "Logos, identités visuelles et illustrations vectorielles", en: "Logos, visual identities and vector illustration" } },
 ];
 
 export const journey = [

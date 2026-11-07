@@ -1,4 +1,4 @@
-// Export statique pour GitHub Pages, servi dans le sous-dossier du dépôt (NEXT_PUBLIC_BASE_PATH=/Portfolio).
+// Export statique pour GitHub Pages. NEXT_PUBLIC_BASE_PATH sert seulement si le site est publié dans un sous-dossier.
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 /** @type {import('next').NextConfig} */

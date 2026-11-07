@@ -1,10 +1,11 @@
-import { Manrope } from "next/font/google";
+import { Fraunces, JetBrains_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "./data";
 import { LangProvider } from "./i18n";
-import { withBase } from "./base";
 
-const manrope = Manrope({ subsets: ["latin"], display: "swap", variable: "--font-manrope" });
+const manrope = Manrope({ subsets: ["latin"], display: "swap", variable: "--font-sans" });
+const fraunces = Fraunces({ subsets: ["latin"], display: "swap", style: ["normal", "italic"], variable: "--font-serif" });
+const mono = JetBrains_Mono({ subsets: ["latin"], display: "swap", weight: ["400", "500"], variable: "--font-mono" });
 
 const title = "Cisse Vamourou · Designer graphique, UI/UX & Web";
 const description =
@@ -28,8 +29,8 @@ export const metadata = {
 
 export const viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#e9e9ea" },
-    { media: "(prefers-color-scheme: dark)", color: "#0b0f17" },
+    { media: "(prefers-color-scheme: light)", color: "#F7F1EC" },
+    { media: "(prefers-color-scheme: dark)", color: "#140A0B" },
   ],
 };
 
@@ -40,6 +41,7 @@ const csp = [
   "script-src 'self' 'unsafe-inline'",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data:",
+  "media-src 'self'",
   "font-src 'self'",
   "connect-src 'self'",
   "object-src 'none'",
@@ -52,13 +54,13 @@ const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t!==
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" className={manrope.variable} suppressHydrationWarning>
+    <html lang="fr" className={`${manrope.variable} ${fraunces.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
         <meta httpEquiv="Content-Security-Policy" content={csp} />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body style={{ "--clouds": `url("${withBase("/images/clouds.jpg")}")` }}>
+      <body>
         <LangProvider>{children}</LangProvider>
       </body>
     </html>

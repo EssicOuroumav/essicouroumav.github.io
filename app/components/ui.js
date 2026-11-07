@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { brandIcons } from "../brandIcons";
 import { useLang } from "../i18n";
@@ -100,4 +100,42 @@ export function Motion() {
     };
   }, []);
   return null;
+}
+
+// Heure locale d'Abidjan, mise à jour chaque minute (vide au rendu statique pour éviter un décalage).
+export function LiveClock({ timeZone }) {
+  const [now, setNow] = useState("");
+  useEffect(() => {
+    const fmt = new Intl.DateTimeFormat("fr-FR", { hour: "2-digit", minute: "2-digit", timeZone });
+    const tick = () => setNow(fmt.format(new Date()));
+    tick();
+    const id = setInterval(tick, 30000);
+    return () => clearInterval(id);
+  }, [timeZone]);
+  return <time suppressHydrationWarning>{now || "--:--"}</time>;
+}
+
+// Vidéo muette en boucle : lancée quand elle est à l'écran (ou au survol de son parent), en pause sinon.
+export function LoopVideo({ src, poster, className, hoverTarget }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const v = ref.current;
+    if (!v || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const play = () => v.play().catch(() => {});
+    const pause = () => v.pause();
+    const hover = matchMedia("(hover: hover)").matches && hoverTarget;
+    if (hover) {
+      const el = v.closest(hoverTarget);
+      el?.addEventListener("mouseenter", play);
+      el?.addEventListener("mouseleave", pause);
+      return () => {
+        el?.removeEventListener("mouseenter", play);
+        el?.removeEventListener("mouseleave", pause);
+      };
+    }
+    const io = new IntersectionObserver(([e]) => (e.isIntersecting ? play() : pause()), { threshold: 0.4 });
+    io.observe(v);
+    return () => io.disconnect();
+  }, [hoverTarget]);
+  return <video ref={ref} className={className} src={src} poster={poster} muted loop playsInline preload="none" aria-hidden="true" />;
 }

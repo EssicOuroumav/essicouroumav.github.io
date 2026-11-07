@@ -1,116 +1,91 @@
 "use client";
 import { useState } from "react";
-import { ArrowUpRight, Globe, PlayCircle } from "lucide-react";
-import { categories, profile, projects } from "../data";
+import { ArrowUpRight } from "lucide-react";
+import { categories, projects } from "../data";
 import { useLang } from "../i18n";
 import { withBase } from "../base";
-import { BrandIcon } from "./ui";
+import ProjectCard, { ProjectLinks, ProjectVisual } from "./ProjectCard";
+import { SectionHead } from "./Sections";
 
-// N'affiche que les filtres qui ont au moins un projet.
-const usedCategories = categories.filter((c) => projects.some((p) => p.category === c));
+const featured = projects.filter((p) => p.featured).slice(0, 6);
 
-function ProjectLinks({ links, t }) {
-  const items = [
-    links.site && { href: links.site, label: t.linkSite, icon: <Globe size={16} aria-hidden="true" /> },
-    links.github && { href: links.github, label: t.linkCode, icon: <BrandIcon name="github" size={16} color="currentColor" /> },
-    links.behance && { href: links.behance, label: t.linkBehance, icon: <BrandIcon name="behance" size={16} color="currentColor" /> },
-    links.video && { href: links.video, label: t.linkVideo, icon: <PlayCircle size={16} aria-hidden="true" /> },
-  ].filter(Boolean);
-
-  if (!items.length) return <p className="card-soon">{t.soon}</p>;
-  return (
-    <div className="card-links">
-      {items.map((l) => (
-        <a key={l.href} className="chip link" href={l.href} target="_blank" rel="noopener noreferrer">
-          {l.icon} {l.label}
-          <span className="sr-only"> {t.newTab}</span>
-        </a>
-      ))}
-    </div>
-  );
-}
-
-function Card({ p }) {
+// Accueil : volets de projets. Le volet actif s'élargit (survol, focus ou clic) ; empilés sur mobile.
+export function Featured() {
   const { t, tr } = useLang();
-  const title = tr(p.title);
-  const main = p.links.site || p.links.behance || p.links.video || p.links.github;
-  const visual =
-    p.visual === "logo" ? (
-      <div className="card-media logo" style={{ "--tint": p.tint }}>
-        <img src={withBase(p.logo)} alt={`Logo ${title}`} loading="lazy" width="400" height="400" />
-      </div>
-    ) : (
-      <div className="card-media">
-        <img src={withBase(p.image)} alt={title} loading="lazy" width="1400" height="1094" />
-        {p.logo && (
-          <span className="card-logo">
-            <img src={withBase(p.logo)} alt="" width="400" height="400" loading="lazy" />
-          </span>
-        )}
-      </div>
-    );
-
+  const [active, setActive] = useState(0);
   return (
-    <article className="card" data-reveal>
-      {main ? (
-        <a className="card-visual" href={main} target="_blank" rel="noopener noreferrer" tabIndex={-1} aria-hidden="true">
-          {visual}
-          <span className="card-arrow">
-            <ArrowUpRight size={22} />
-          </span>
+    <section id="work" className="sec">
+      <SectionHead index={1} kicker={t.workKicker} title={t.workH} intro={t.workP}>
+        <a className="btn ghost" href={withBase("/projets/")}>
+          {t.allProjects} <ArrowUpRight size={18} aria-hidden="true" />
         </a>
-      ) : (
-        <div className="card-visual">{visual}</div>
-      )}
-      <div className="card-body">
-        <p className="card-cat">{t.filters[p.category]}</p>
-        <h3>{title}</h3>
-        <p className="card-desc">{tr(p.desc)}</p>
-        <ul className="tags">
-          {p.tags.map((tag) => (
-            <li key={tag} className="chip">
-              {tag}
-            </li>
-          ))}
-        </ul>
-        <ProjectLinks links={p.links} t={t} />
+      </SectionHead>
+      <div className="panels" data-reveal>
+        {featured.map((p, i) => {
+          const title = tr(p.title);
+          const isOpen = active === i;
+          return (
+            <article
+              key={p.key}
+              className={isOpen ? "panel open" : "panel"}
+              onMouseEnter={() => setActive(i)}
+              onFocus={() => setActive(i)}
+            >
+              <button type="button" className="panel-tab" aria-expanded={isOpen} onClick={() => setActive(i)}>
+                <span className="mono">{String(i + 1).padStart(2, "0")}</span>
+                <span className="panel-title">{title}</span>
+              </button>
+              <div className="panel-content" aria-hidden={!isOpen}>
+                <ProjectVisual p={p} title={title} hoverTarget=".panel" />
+                <div className="panel-info">
+                  <span className="pcard-cat">{t.filters[p.category]}</span>
+                  <h3>{title}</h3>
+                  <p>{tr(p.desc)}</p>
+                  {isOpen && <ProjectLinks links={p.links} />}
+                </div>
+              </div>
+            </article>
+          );
+        })}
       </div>
-    </article>
+    </section>
   );
 }
 
-export default function Work() {
+// Page Projets : filtres + grille de cartes portrait.
+const used = categories.filter((c) => projects.some((p) => p.category === c));
+
+export function ProjectsGrid() {
   const { t } = useLang();
   const [filter, setFilter] = useState("all");
   const shown = filter === "all" ? projects : projects.filter((p) => p.category === filter);
-
   return (
-    <section id="work" className="sec work">
-      <div className="work-panel">
-        <div className="work-head" data-reveal>
-          <span className="watermark" aria-hidden="true">
-            {t.watermark}
-          </span>
-          <h2>{t.workH}</h2>
-          <p>{t.workP}</p>
-        </div>
-        <div className="work-bar">
-          <div className="filters" role="group" aria-label={t.nav[1]}>
-            {["all", ...usedCategories].map((c) => (
-              <button key={c} type="button" aria-pressed={filter === c} onClick={() => setFilter(c)}>
-                {t.filters[c]}
-              </button>
-            ))}
-          </div>
-          <a className="btn sm" href={profile.behance} target="_blank" rel="noopener noreferrer">
-            {t.allBehance} <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
-        </div>
-        <div className="grid">
-          {shown.map((p) => (
-            <Card key={p.key} p={p} />
-          ))}
-        </div>
+    <section className="sec projects-page">
+      <div className="pp-head">
+        <p className="kicker mono">
+          <span>({String(projects.length).padStart(2, "0")})</span>
+          {t.workKicker}
+        </p>
+        <h1 className="pp-title">
+          <span className="sans">{t.workH}</span>
+          <span className="serif">.</span>
+        </h1>
+        <p className="sec-intro">{t.projectsIntro}</p>
+      </div>
+      <div className="filters" role="group" aria-label={t.filtersLabel}>
+        {["all", ...used].map((c) => {
+          const count = c === "all" ? projects.length : projects.filter((p) => p.category === c).length;
+          return (
+            <button key={c} type="button" aria-pressed={filter === c} onClick={() => setFilter(c)}>
+              {t.filters[c]} <span className="mono">{count}</span>
+            </button>
+          );
+        })}
+      </div>
+      <div className="pgrid">
+        {shown.map((p) => (
+          <ProjectCard key={p.key} p={p} index={projects.indexOf(p)} />
+        ))}
       </div>
     </section>
   );

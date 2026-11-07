@@ -1,56 +1,43 @@
 "use client";
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { profile } from "../data";
 import { useLang } from "../i18n";
 import { withBase } from "../base";
-import { LangSwitch, ThemeToggle } from "./ui";
+import { LangSwitch, LiveClock, ThemeToggle } from "./ui";
 
-const anchors = ["#services", "#work", "#tools", "#journey"];
+const links = ["/#top", "/projets/", "/#journey", "/#contact"];
 
+// Barre du haut (marque, heure, réglages) + pilule de navigation flottante en bas de l'écran.
 export default function Header() {
   const { t } = useLang();
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && setOpen(false);
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
-
   return (
-    <header className="top">
-      <div className="bar">
-        <a href={withBase("/#top")} className="brand" onClick={() => setOpen(false)}>
-          Cisse<span>Vamourou</span>
+    <>
+      <header className="top">
+        <a href={withBase("/")} className="brand" aria-label={profile.name}>
+          <span className="brand-mark" aria-hidden="true">
+            CV
+          </span>
+          <span className="brand-name">
+            Cisse <em>Vamourou</em>
+          </span>
         </a>
-        <nav className={open ? "nav open" : "nav"} id="main-nav">
-          {anchors.map((href, i) => (
-            <a key={href} href={withBase(`/${href}`)} onClick={() => setOpen(false)}>
-              {t.nav[i]}
-            </a>
-          ))}
-          <a className="btn solid sm nav-cta" href={withBase("/#contact")} onClick={() => setOpen(false)}>
-            {t.contact}
-          </a>
-        </nav>
-        <div className="actions">
+        <p className="top-meta mono">
+          <span className="dot" aria-hidden="true" />
+          {t.status}
+          <span className="sep" aria-hidden="true" />
+          Abidjan <LiveClock timeZone={profile.timeZone} />
+        </p>
+        <div className="top-actions">
           <LangSwitch />
           <ThemeToggle />
-          <a className="btn solid sm bar-cta" href={withBase("/#contact")}>
-            {t.contact}
-          </a>
-          <button
-            type="button"
-            className="icon-btn burger"
-            aria-expanded={open}
-            aria-controls="main-nav"
-            aria-label={open ? t.close : t.menu}
-            onClick={() => setOpen((o) => !o)}
-          >
-            {open ? <X size={20} /> : <Menu size={20} />}
-          </button>
         </div>
-      </div>
-    </header>
+      </header>
+      <nav className="dock" aria-label={t.menuLabel}>
+        {links.map((href, i) => (
+          <a key={href} href={withBase(href)}>
+            {t.nav[i]}
+          </a>
+        ))}
+      </nav>
+    </>
   );
 }

@@ -1,6 +1,6 @@
 import Header from "./components/Header";
-import Work from "./components/Work";
-import { Contact, Footer, Hero, Journey, Services, ToolStrip, Tools } from "./components/Sections";
+import { Featured } from "./components/Work";
+import { Contact, Footer, Hero, Journey, Marquee, Skills, Tools } from "./components/Sections";
 import { Motion } from "./components/ui";
 
 export default function Home() {
@@ -10,9 +10,9 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <ToolStrip />
-        <Services />
-        <Work />
+        <Marquee />
+        <Featured />
+        <Skills />
         <Tools />
         <Journey />
         <Contact />

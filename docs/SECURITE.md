@@ -21,6 +21,7 @@ Pas de comptes, pas de paiement, pas d'IA, pas de fichiers déposés, pas de bas
 |---|---|---|
 | `/` | statique, lecture seule | `curl` local : 200 |
 | `/mentions-legales/` | statique | `curl` local : 200 |
+| `/projets/` | statique | à vérifier en ligne |
 | `/sitemap.xml`, `/robots.txt`, `/og.jpg`, `/icon.png` | statiques | `curl` local : 200 |
 | adresse inconnue | `404.html` | `curl` local `/inconnu` : 404 |
 Aucune route ne reçoit de donnée : pas de formulaire (`form-action 'none'` dans la CSP).
@@ -28,6 +29,7 @@ Aucune route ne reçoit de donnée : pas de formulaire (`form-action 'none'` dan
 ## 4. Cas d'abus
 - [x] Inondation, devinette, coût, concurrence, liens secrets, fichiers, IDOR, CSRF, cookies, prise de compte : **sans objet** (pas de serveur, pas de compte, aucun cookie).
 - [x] Injection : contenu statique écrit dans `app/data.js` ; seul `dangerouslySetInnerHTML` = script de thème constant (`app/layout.js`).
+- [x] Vidéos : servies depuis le dépôt (`media-src 'self'`), muettes, `preload="none"` ; `scripts/check.mjs` refuse une vidéo de plus de 5 Mo.
 - [x] Code livré : pas de source maps (`productionBrowserSourceMaps: false`, `scripts/check.mjs` échoue sur un `.map`).
 - [x] Données personnelles : `scripts/check.mjs` échoue si la date de naissance, la situation familiale, la nationalité ou la référence apparaissent dans `out/` (précondition prouvée : un faux fichier contenant « 1997 » a bien été signalé).
 - [x] Chaîne d'approvisionnement : versions figées, `npm ci`, `postcss` forcé en 8.5.23 (`overrides`) ; `npm audit` : 0 vulnérabilité (2026-10-30).
