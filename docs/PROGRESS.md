@@ -45,5 +45,6 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 - Les captures des sites sont celles du 2026-10-30.
 
 ## Reste à faire
-- Propriétaire : captures de Kateni (application privée) et de PrixCI, dépôt Kerya, nom exact du projet « Eden ». Fait : partage Figma public, titres des vidéos confirmés, AquaWater = AquaPay.
+- Kateni : en attente (2026-11-08). Le propriétaire refait le design et ajoute de nouvelles données ; ensuite, intégrer ses nouvelles captures (accueil, prédiction, statistiques) dans la carte Kateni. L'accès à l'application est lié à l'appareil (code personnel), donc les captures viendront du propriétaire.
+- Propriétaire : captures de PrixCI, dépôt Kerya, nom exact du projet « Eden ». Fait : partage Figma public, titres des vidéos confirmés, AquaWater = AquaPay.
 - Assistant : audit gitleaks des dépôts à rendre publics, puis publication, puis Lighthouse ×3 sur l'URL publiée.
