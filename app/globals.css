@@ -99,8 +99,6 @@ body::before {
 .certs,
 .filters button,
 .btn.line {
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
   box-shadow: inset 0 1px 0 var(--glass-hi), 0 18px 40px -24px rgba(40, 28, 80, 0.35);
 }
 
@@ -259,8 +257,6 @@ h3 {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.3);
   color: #fff;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
 }
 
 .btn.line {
@@ -280,8 +276,6 @@ h3 {
   border-color: var(--glass-line);
   color: var(--hero-ink);
   line-height: 1.05;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 
 .reel-dot {
@@ -304,8 +298,6 @@ h3 {
   display: grid;
   place-items: center;
   cursor: pointer;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
 }
 
 /* Barre du haut (posée sur le rouge, comme la référence) */
@@ -361,8 +353,6 @@ h3 {
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
   box-shadow: 0 8px 24px -14px rgba(40, 28, 80, 0.35);
   transition: background 0.2s ease, color 0.2s ease;
 }
@@ -463,19 +453,20 @@ h3 {
 }
 
 .nx-word .it {
+  font-family: var(--font-italic), var(--font-sans), sans-serif;
   display: inline-flex;
   align-items: center;
   gap: 14px;
   font-style: italic;
   font-weight: 800;
-  font-size: clamp(26px, 3.4vw, 54px);
+  font-size: clamp(22px, 2.4vw, 40px);
   letter-spacing: -0.02em;
   color: var(--ink);
 }
 
 .nx-word .big {
   font-weight: 800;
-  font-size: clamp(54px, 8vw, 128px);
+  font-size: clamp(44px, 5.6vw, 92px);
   letter-spacing: -0.03em;
   color: var(--accent);
 }
@@ -495,7 +486,7 @@ h3 {
   left: 50%;
   bottom: 0;
   z-index: 2;
-  width: min(36vw, 72svh, 540px);
+  width: min(38vw, 100svh, 880px);
   transform: translateX(-50%);
   perspective: 1200px;
   pointer-events: none;
@@ -506,7 +497,6 @@ h3 {
   transform-origin: 50% 90%;
   transform: rotateY(calc(var(--px) * 10deg)) rotateX(calc(var(--py) * -4deg));
   filter: drop-shadow(0 30px 40px rgba(40, 28, 80, 0.28));
-  will-change: transform;
 }
 
 .nx-ring {
@@ -530,8 +520,8 @@ h3 {
   animation: float3d 7s ease-in-out infinite;
 }
 
-.nx .o3d-figma { left: -12%; top: 6%; }
-.nx .o3d-video-camera { right: -14%; top: 14%; width: 108px; animation-delay: -3s; }
+.nx .o3d-figma { left: 2%; top: 2%; }
+.nx .o3d-video-camera { right: 0; top: 8%; width: 108px; animation-delay: -3s; }
 
 @keyframes float3d {
   50% { translate: 0 -12px; rotate: 4deg; }
@@ -542,7 +532,7 @@ h3 {
   z-index: 1;
   margin-top: auto;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr) minmax(0, 1fr);
   gap: 32px;
   padding: 40px;
   min-height: 46svh;
@@ -1509,7 +1499,6 @@ main {
   border-radius: 999px;
   background: rgba(20, 17, 24, 0.55);
   color: var(--white);
-  backdrop-filter: blur(6px);
   pointer-events: none;
 }
 
@@ -1741,7 +1730,7 @@ main {
   }
 
   .nx-word .big {
-    font-size: 16vw;
+    font-size: 13vw;
   }
 
   .nx-proof {

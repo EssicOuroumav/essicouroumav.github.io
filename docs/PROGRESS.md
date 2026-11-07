@@ -58,3 +58,9 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 - Palette violette (#6f52cc, lavande #f1eef8), police Poppins.
 - Cartes projets nettes : plus de flou (backdrop-filter et masques retirés), dégradé limité au bas de la carte, cartes voisines non estompées.
 - Outils : Photoshop, After Effects et Flutter ajoutés (9 outils).
+
+## v8.1
+- Photo de l'accueil agrandie (jusqu'à 880 px), mots UI/UX et DIGITAL réduits.
+- Carte Markodience recadrée sur les visages, sans le texte du site sous le titre.
+- Vitesse : images des projets réduites à 1100 px (3,9 Mo -> 1,6 Mo), avatar de 160 px, derniers flous (backdrop-filter) retirés, une seule variante italique de Poppins.
+- Lighthouse mobile avant : performance 38, accessibilité 96, bonnes pratiques 100, SEO 100. À remesurer après publication.

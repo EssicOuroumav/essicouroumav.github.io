@@ -9,7 +9,7 @@ export const profile = {
   whatsapp: "https://wa.me/2250777543648",
   whatsappLabel: "+225 07 77 54 36 48",
   behance: "https://www.behance.net/essicouroumav",
-  photo: "/images/cisse-vamourou.jpg",
+  photo: "/images/cisse-avatar.jpg",
   experienceYears: 3,
   coords: "5.36° N · 4.01° W",
   timeZone: "Africa/Abidjan",
@@ -93,7 +93,7 @@ export const projects = [
     category: "web",
     visual: "browser",
     featured: true,
-    image: "/images/projects/markodience.jpg",
+    image: "/images/projects/markodience-card.jpg",
     logo: "/images/logos/markodience.png",
     tags: ["Next.js", "Supabase", "IA"],
     desc: {
