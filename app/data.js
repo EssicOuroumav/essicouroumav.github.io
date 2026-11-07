@@ -1,7 +1,7 @@
 // Contenu du portfolio. Chaque texte a sa version française (fr) et anglaise (en).
 // Ajouter un projet = ajouter une entrée dans `projects` (image dans public/images/projects/).
 
-export const SITE_URL = "https://cissevamourou.github.io";
+export const SITE_URL = "https://essicouroumav.github.io";
 
 export const profile = {
   name: "Cisse Vamourou",
