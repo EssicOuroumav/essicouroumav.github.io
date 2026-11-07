@@ -1,6 +1,6 @@
 "use client";
-import { ArrowDownRight, ArrowUpRight, Mail, MapPin } from "lucide-react";
-import { certifications, journey, profile, projects, services, tools } from "../data";
+import { Mail } from "lucide-react";
+import { certifications, journey, profile, services, tools } from "../data";
 import { useLang } from "../i18n";
 import { withBase } from "../base";
 import { BrandIcon } from "./ui";
@@ -24,91 +24,6 @@ export function SectionHead({ index, total = 5, kicker, title, intro, children }
   );
 }
 
-// Texte circulaire qui tourne lentement autour du badge.
-function RotatingBadge({ text }) {
-  const repeated = text.repeat(2);
-  return (
-    <div className="badge" aria-hidden="true">
-      <svg viewBox="0 0 200 200">
-        <defs>
-          <path id="badge-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
-        </defs>
-        <text>
-          <textPath href="#badge-circle">{repeated}</textPath>
-        </text>
-      </svg>
-      <span className="badge-core">
-        <ArrowDownRight size={30} strokeWidth={1.6} />
-      </span>
-    </div>
-  );
-}
-
-export function Hero() {
-  const { t } = useLang();
-  return (
-    <section id="top" className="hero">
-      <div className="hero-grid" aria-hidden="true" />
-      <div className="hero-copy">
-        <p className="kicker mono">
-          <span>{t.edition} — {new Date().getFullYear()}</span>
-          {profile.coords}
-        </p>
-        <h1 className="hero-title">
-          <span className="sans">{t.heroFirst}</span>
-          <span className="serif">{t.heroLast}</span>
-        </h1>
-        <p className="hero-role">{t.role}</p>
-        <p className="hero-lead">{t.lead}</p>
-        <div className="cta">
-          <a className="btn primary" href={withBase("/projets/")}>
-            {t.ctaWork} <ArrowUpRight size={18} aria-hidden="true" />
-          </a>
-          <a className="btn ghost" href={profile.whatsapp} target="_blank" rel="noopener noreferrer">
-            <BrandIcon name="whatsapp" size={18} /> {t.ctaChat}
-          </a>
-        </div>
-        <dl className="stats">
-          <div>
-            <dt>{t.stats[0]}</dt>
-            <dd>
-              <span data-count={profile.experienceYears}>{profile.experienceYears}</span>
-            </dd>
-          </div>
-          <div>
-            <dt>{t.stats[1]}</dt>
-            <dd>
-              <span data-count={projects.length}>{projects.length}</span>
-            </dd>
-          </div>
-          <div>
-            <dt>{t.stats[2]}</dt>
-            <dd>
-              <span data-count={services.length}>{services.length}</span>
-            </dd>
-          </div>
-        </dl>
-      </div>
-      <div className="hero-visual">
-        <div className="arch">
-          <img src={withBase(profile.photo)} alt={profile.name} width="800" height="800" fetchPriority="high" />
-        </div>
-        <RotatingBadge text={t.badge} />
-        <ul className="hero-tools" aria-label={t.toolsH}>
-          {tools.map((tool) => (
-            <li key={tool.key} title={tool.name}>
-              <img src={withBase(tool.logo)} alt={tool.name} width="256" height="256" />
-            </li>
-          ))}
-        </ul>
-        <p className="hero-place mono">
-          <MapPin size={14} aria-hidden="true" /> Abidjan, Côte d'Ivoire
-        </p>
-      </div>
-    </section>
-  );
-}
-
 export function Marquee() {
   const { tr } = useLang();
   const items = [...services, ...services];
@@ -118,7 +33,7 @@ export function Marquee() {
         {[0, 1].map((copy) => (
           <div className="marquee-group" key={copy}>
             {items.map((s, i) => (
-              <span key={`${copy}-${i}`} className={i % 2 ? "serif" : "sans"}>
+              <span key={`${copy}-${i}`} className={i % 2 ? "outline" : ""}>
                 {tr(s.title)}
                 <i className="spark" />
               </span>
@@ -211,17 +126,17 @@ export function Contact() {
           {t.ctaKicker}
         </p>
         <h2>
-          <span className="sans">{t.ctaH1}</span> <span className="serif">{t.ctaH2}</span>
+          <span>{t.ctaH1}</span> <span className="accent">{t.ctaH2}</span>
         </h2>
         <p className="contact-p">{t.ctaP}</p>
-        <div className="cta">
-          <a className="btn cream" href={`mailto:${profile.email}`}>
+        <div className="hero-cta">
+          <a className="btn yellow" href={`mailto:${profile.email}`}>
             <Mail size={18} aria-hidden="true" /> {t.mail}
           </a>
-          <a className="btn outline" href={profile.whatsapp} target="_blank" rel="noopener noreferrer">
+          <a className="btn glass" href={profile.whatsapp} target="_blank" rel="noopener noreferrer">
             <BrandIcon name="whatsapp" size={18} color="currentColor" /> WhatsApp
           </a>
-          <a className="btn outline" href={profile.behance} target="_blank" rel="noopener noreferrer">
+          <a className="btn glass" href={profile.behance} target="_blank" rel="noopener noreferrer">
             <BrandIcon name="behance" size={18} color="currentColor" /> Behance
           </a>
         </div>
@@ -235,7 +150,7 @@ export function Footer() {
   return (
     <footer className="foot">
       <div className="foot-big" aria-hidden="true">
-        <span className="sans">Cisse</span> <span className="serif">Vamourou</span>
+        Cisse <span>Vamourou</span>
       </div>
       <div className="foot-cols">
         <div>

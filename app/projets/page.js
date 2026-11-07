@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import { ProjectsGrid } from "../components/Work";
 import { Contact, Footer } from "../components/Sections";
-import { Motion } from "../components/ui";
+import { Cursor, Motion } from "../components/ui";
 import { SITE_URL } from "../data";
 
 export const metadata = {
@@ -14,7 +14,9 @@ export default function Page() {
   return (
     <>
       <Motion />
+      <Cursor />
       <Header />
+      <div className="page-band" aria-hidden="true" />
       <main>
         <ProjectsGrid />
         <Contact />

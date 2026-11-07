@@ -6,38 +6,35 @@ import { LangSwitch, LiveClock, ThemeToggle } from "./ui";
 
 const links = ["/#top", "/projets/", "/#journey", "/#contact"];
 
-// Barre du haut (marque, heure, réglages) + pilule de navigation flottante en bas de l'écran.
+// Barre du haut en pilules (comme la référence) ; posée sur le hero rouge de l'accueil.
 export default function Header() {
   const { t } = useLang();
   return (
-    <>
-      <header className="top">
-        <a href={withBase("/")} className="brand" aria-label={profile.name}>
-          <span className="brand-mark" aria-hidden="true">
-            CV
-          </span>
-          <span className="brand-name">
-            Cisse <em>Vamourou</em>
-          </span>
+    <header className="top">
+      <nav className="top-left" aria-label={t.menuLabel}>
+        <a href={withBase("/")} className="avatar" aria-label={profile.name}>
+          <img src={withBase(profile.photo)} alt="" width="80" height="80" />
         </a>
-        <p className="top-meta mono">
-          <span className="dot" aria-hidden="true" />
-          {t.status}
-          <span className="sep" aria-hidden="true" />
-          Abidjan <LiveClock timeZone={profile.timeZone} />
-        </p>
-        <div className="top-actions">
-          <LangSwitch />
-          <ThemeToggle />
-        </div>
-      </header>
-      <nav className="dock" aria-label={t.menuLabel}>
-        {links.map((href, i) => (
-          <a key={href} href={withBase(href)}>
+        {links.slice(0, 3).map((href, i) => (
+          <a key={href} className="pill" href={withBase(href)}>
             {t.nav[i]}
           </a>
         ))}
       </nav>
-    </>
+      <a href={withBase("/")} className="wordmark">
+        <span className="wordmark-dot" aria-hidden="true" />
+        cisse<b>vamourou</b>
+      </a>
+      <div className="top-right">
+        <span className="pill ghost clock mono">
+          ABJ <LiveClock timeZone={profile.timeZone} />
+        </span>
+        <a className="pill" href={withBase(links[3])}>
+          {t.nav[3]}
+        </a>
+        <LangSwitch />
+        <ThemeToggle />
+      </div>
+    </header>
   );
 }

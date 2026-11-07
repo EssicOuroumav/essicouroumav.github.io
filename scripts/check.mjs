@@ -33,8 +33,8 @@ function walk(v, path) {
 walk(data, "data");
 
 // Chaque image référencée par le contenu existe.
-const refs = JSON.stringify(data).match(/\/images\/[^"]+/g) || [];
-for (const r of new Set(refs)) if (!existsSync(join("public", r))) fail(`image manquante : public${r}`);
+const refs = JSON.stringify(data).match(/\/(images|videos)\/[^"]+/g) || [];
+for (const r of new Set(refs)) if (!existsSync(join("public", r))) fail(`fichier manquant : public${r}`);
 
 // 3. Dossier exporté.
 const OUT = "out";

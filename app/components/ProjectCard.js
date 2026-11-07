@@ -1,5 +1,5 @@
 "use client";
-import { ArrowUpRight, Globe, PlayCircle } from "lucide-react";
+import { Globe, PlayCircle } from "lucide-react";
 import { useLang } from "../i18n";
 import { withBase } from "../base";
 import { BrandIcon, LoopVideo } from "./ui";
@@ -63,38 +63,5 @@ export function ProjectLinks({ links }) {
         </a>
       ))}
     </div>
-  );
-}
-
-// Carte portrait de la page Projets.
-export default function ProjectCard({ p, index }) {
-  const { t, tr } = useLang();
-  const title = tr(p.title);
-  const main = p.links.site || p.links.figma || p.links.video || p.links.behance || p.links.github;
-  return (
-    <article className="pcard" data-reveal>
-      <div className="pcard-media">
-        <ProjectVisual p={p} title={title} hoverTarget=".pcard" />
-        <span className="pcard-cat">{t.filters[p.category]}</span>
-        <span className="pcard-index mono">{String(index + 1).padStart(2, "0")}</span>
-        <div className="pcard-overlay">
-          <h3>{title}</h3>
-          {main && (
-            <a className="pcard-go" href={main} target="_blank" rel="noopener noreferrer" aria-label={`${t.open} : ${title} ${t.newTab}`}>
-              <ArrowUpRight size={20} aria-hidden="true" />
-            </a>
-          )}
-        </div>
-      </div>
-      <div className="pcard-body">
-        <p className="pcard-desc">{tr(p.desc)}</p>
-        <ul className="pcard-tags mono">
-          {p.tags.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
-        <ProjectLinks links={p.links} />
-      </div>
-    </article>
   );
 }

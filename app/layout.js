@@ -1,10 +1,10 @@
-import { Fraunces, JetBrains_Mono, Manrope } from "next/font/google";
+import { Archivo, JetBrains_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "./data";
 import { LangProvider } from "./i18n";
 
 const manrope = Manrope({ subsets: ["latin"], display: "swap", variable: "--font-sans" });
-const fraunces = Fraunces({ subsets: ["latin"], display: "swap", style: ["normal", "italic"], variable: "--font-serif" });
+const archivo = Archivo({ subsets: ["latin"], display: "swap", axes: ["wdth"], variable: "--font-display" });
 const mono = JetBrains_Mono({ subsets: ["latin"], display: "swap", weight: ["400", "500"], variable: "--font-mono" });
 
 const title = "Cisse Vamourou · Designer graphique, UI/UX & Web";
@@ -29,8 +29,8 @@ export const metadata = {
 
 export const viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F7F1EC" },
-    { media: "(prefers-color-scheme: dark)", color: "#140A0B" },
+    { media: "(prefers-color-scheme: light)", color: "#8A0E19" },
+    { media: "(prefers-color-scheme: dark)", color: "#4A050C" },
   ],
 };
 
@@ -54,7 +54,7 @@ const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t!==
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" className={`${manrope.variable} ${fraunces.variable} ${mono.variable}`} suppressHydrationWarning>
+    <html lang="fr" className={`${manrope.variable} ${archivo.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
         <meta httpEquiv="Content-Security-Policy" content={csp} />
         <meta name="referrer" content="strict-origin-when-cross-origin" />

@@ -139,3 +139,55 @@ export function LoopVideo({ src, poster, className, hoverTarget }) {
   }, [hoverTarget]);
   return <video ref={ref} className={className} src={src} poster={poster} muted loop playsInline preload="none" aria-hidden="true" />;
 }
+
+// Curseur animé : un point qui suit exactement le pointeur et un anneau qui le rattrape en douceur.
+// L'anneau grossit sur les liens et affiche « Voir » sur les éléments marqués data-cursor="view".
+export function Cursor() {
+  const ring = useRef(null);
+  const dot = useRef(null);
+  const { t } = useLang();
+  useEffect(() => {
+    const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!fine || reduce) return;
+    document.documentElement.classList.add("has-cursor");
+    const p = { x: -100, y: -100 };
+    const r = { x: -100, y: -100 };
+    let raf = 0;
+    const onMove = (e) => {
+      p.x = e.clientX;
+      p.y = e.clientY;
+      const el = e.target.closest?.("a, button, [data-cursor]");
+      ring.current?.classList.toggle("is-link", !!el);
+      ring.current?.classList.toggle("is-view", el?.dataset?.cursor === "view");
+    };
+    const onLeave = () => ring.current?.classList.add("is-hidden");
+    const onEnter = () => ring.current?.classList.remove("is-hidden");
+    const tick = () => {
+      r.x += (p.x - r.x) * 0.18;
+      r.y += (p.y - r.y) * 0.18;
+      if (dot.current) dot.current.style.transform = `translate(${p.x}px, ${p.y}px)`;
+      if (ring.current) ring.current.style.transform = `translate(${r.x}px, ${r.y}px)`;
+      raf = requestAnimationFrame(tick);
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+    document.addEventListener("mouseleave", onLeave);
+    document.addEventListener("mouseenter", onEnter);
+    raf = requestAnimationFrame(tick);
+    return () => {
+      document.documentElement.classList.remove("has-cursor");
+      window.removeEventListener("pointermove", onMove);
+      document.removeEventListener("mouseleave", onLeave);
+      document.removeEventListener("mouseenter", onEnter);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+  return (
+    <>
+      <div ref={ring} className="cursor-ring" aria-hidden="true">
+        <span>{t.go}</span>
+      </div>
+      <div ref={dot} className="cursor-dot" aria-hidden="true" />
+    </>
+  );
+}

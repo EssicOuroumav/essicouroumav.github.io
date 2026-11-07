@@ -11,7 +11,13 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 
 - v2 (2026-11-07) : refonte complète. Palette crème / bordeaux tirée de la capture « Beefy », Manrope + Fraunces italique + JetBrains Mono, navigation en pilule flottante, volets de projets à l'accueil, compétences en cartes illustrées, page `/projets/` en cartes portrait (capture dans un cadre de navigateur, visuel, couverture de marque ou vidéo), vrais logos d'outils fournis par le propriétaire (Figma, DaVinci Resolve, Affinity) + tuile Claude, 3 ans d'expérience. Fond nuageux retiré.
 
+- v3 (2026-11-07) : refonte d'après la vidéo de référence du propriétaire (hero rouge profond, titre blanc et jaune, personnage qui suit le curseur, cartes en verre, cercle de texte qui tourne). Le portrait est la photo du propriétaire détourée avec l'outil Vision de macOS (gratuit), inclinée en 3D selon le curseur : la vidéo IA d'une tête qui tourne n'était pas possible (Higgsfield 0 crédit, modèles vidéo Figma réservés aux forfaits payants, Canva refusé par le propriétaire pour ne pas consommer sa limite IA). Curseur animé (point + anneau, « Voir » sur les projets). Accueil : index des projets avec aperçu qui suit le curseur. Page `/projets/` : grille éditoriale, filtres, `#motion` dans l'adresse ouvre le filtre Motion. 27 projets : 11 vidéos de motion (extraits de 8 s, < 1 Mo, depuis le dossier Bureau/1 ; vidéo complète = dossier Mega), 4 projets UI (IVERT cacao, IVERT recyclage, Essic Fitness+, Coupure AF) exportés depuis Figma, outils CapCut et Meta Ads ajoutés.
+
 ## Erreurs et décisions
+- Cartes de projets invisibles après un changement de filtre : l'animation d'apparition (GSAP ScrollTrigger) masquait les cartes déjà montées et ne se recalculait pas. Pas d'animation d'apparition sur une grille filtrable. C'était probablement le « bug » vu par le propriétaire sur la v2.
+- `.orbit svg` faisait aussi tourner l'icône flèche : même erreur que `.badge svg` en v2. Toujours cibler `> svg` quand un conteneur anime son SVG et contient une icône.
+- Débordement horizontal : un mot très long en police large (« VAMOUROU » du pied de page) dépasse sa boîte sans l'agrandir ; en `vw`, la largeur fautive gonfle encore la police. Mesurer le texte avec un `Range`, réduire la taille, et `html { overflow-x: clip }` en garde-fou.
+- Aperçu de « La Minute Rose » : l'image tirée à 4 s montrait une photo médicale crue ; extrait recoupé sur le générique.
 - `next/font` a échoué une fois (ETIMEDOUT vers Google Fonts) : relancer le build ; ce n'est pas une erreur de code.
 - `.badge svg` faisait aussi tourner l'icône flèche du badge : sélecteur restreint à `.badge > svg`.
 - Volets : le texte recouvrait la capture du site ; texte à gauche (46 %) et cadre de navigateur à droite (50 %).
@@ -27,5 +33,5 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 - Les captures des sites sont celles du 2026-10-30.
 
 ## Reste à faire
-- Propriétaire : liens Mega des vidéos de motion, liens des fichiers Figma (UI Design), captures de PrixCI et Kateni, AquaWater (logo, captures), dépôt Kerya, nom exact du projet « Eden ».
+- Propriétaire : vérifier les titres des vidéos (déduits des noms de fichiers : Adyen, MTN Skills Academy, Portail ODC présentés comme projets de motion), rendre les fichiers Figma consultables par lien (sinon le bouton Figma demandera un accès), captures de PrixCI et Kateni, AquaWater (logo, captures), dépôt Kerya, nom exact du projet « Eden ».
 - Assistant : audit gitleaks des dépôts à rendre publics, puis publication, puis Lighthouse ×3 sur l'URL publiée.

@@ -35,6 +35,7 @@ export function LegalPage() {
   return (
     <>
       <Header />
+      <div className="page-band" aria-hidden="true" />
       <main className="simple">
         <h1>{c.title}</h1>
         {c.blocks.map(([h, p]) => (
@@ -59,6 +60,7 @@ export function NotFoundPage() {
   return (
     <>
       <Header />
+      <div className="page-band" aria-hidden="true" />
       <main className="simple">
         <h1>404</h1>
         <p>{lang === "fr" ? "Cette page n'existe pas ou a été déplacée." : "This page does not exist or has moved."}</p>
