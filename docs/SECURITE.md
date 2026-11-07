@@ -48,7 +48,11 @@ Aucune route ne reçoit de donnée : pas de formulaire (`form-action 'none'` dan
 - F3 (moyen) GitHub Pages n'autorise pas d'en-têtes HTTP : CSP en balise meta (`app/layout.js`), `unsafe-inline` nécessaire à l'export Next ; pas de `frame-ancestors` ni HSTS contrôlables. HTTPS forcé : **à vérifier** après publication.
 - F4 (moyen) Dépendances : corrigé (`overrides`, audit vide).
 - F5 (moyen) Renommage EssicOuroumav → cissevamourou : mettre à jour les skills et remotes locaux ; ne laisser personne reprendre l'ancien nom. **En attente.**
-- F7 (élevé) Dépôts à rendre publics : audit gitleaks de tout l'historique avant chaque passage en public ; `kateni` contient des fichiers `*_cle.command`, `Secrets_*.command`, `Neon_production.command`. **En attente.**
+- F7 (élevé → faible) Dépôts à rendre publics : audit gitleaks 8.30.1 de **tout l'historique** (2026-11-07) :
+  - prixci (13 commits), ivert (1), kateni (92) : **0 fuite**. Les fichiers `*.command` de kateni ne contiennent aucune valeur : ils lancent des scripts qui lisent la clé depuis le presse-papiers.
+  - Markodience (91 commits) : 3 alertes = mot de passe de comptes de test jetables `@example.com` dans `scripts/rls-smoke.mjs` et `scripts/payments-race.mjs`. Faux positif si ce mot de passe ne sert nulle part ailleurs : **à confirmer par le propriétaire**.
+  - ong-aicha-site (37 commits) : 1 alerte = fausse clé `sk_live_…` dans `tests/errors.test.ts` (test du masquage des erreurs). Faux positif.
+  - Passage en public : seulement après l'accord explicite du propriétaire, dépôt par dépôt.
 
 ## 7. Non couvert
 Comportement des services tiers (Behance, WhatsApp, GitHub), essai d'intrusion, rendu sur le vrai téléphone du propriétaire.
