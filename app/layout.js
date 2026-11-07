@@ -1,9 +1,9 @@
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "./data";
 import { LangProvider } from "./i18n";
 
-const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-sans" });
+const poppins = Poppins({ subsets: ["latin"], display: "swap", weight: ["400", "500", "600", "700", "800"], style: ["normal", "italic"], variable: "--font-sans" });
 const mono = JetBrains_Mono({ subsets: ["latin"], display: "swap", weight: ["400", "500"], variable: "--font-mono" });
 
 const title = "Cisse Vamourou · Designer graphique, UI/UX & Web";
@@ -53,7 +53,7 @@ const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t!==
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${mono.variable}`} suppressHydrationWarning>
+    <html lang="fr" className={`${poppins.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
         <meta httpEquiv="Content-Security-Policy" content={csp} />
         <meta name="referrer" content="strict-origin-when-cross-origin" />

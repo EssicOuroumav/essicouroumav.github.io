@@ -372,9 +372,12 @@ export const projects = [
 export const tools = [
   { key: "claude", name: "Claude Code", logo: "/images/tools/claude.png", desc: { fr: "Sites et applications avec l'IA", en: "AI-assisted websites and apps" } },
   { key: "figma", name: "Figma", logo: "/images/tools/figma.png", desc: { fr: "Maquettes UI/UX et prototypes", en: "UI/UX mockups and prototypes" } },
+  { key: "photoshop", name: "Photoshop", logo: "/images/tools/photoshop.png", desc: { fr: "Retouche photo et visuels publicitaires", en: "Photo retouching and ad visuals" } },
+  { key: "aftereffects", name: "After Effects", logo: "/images/tools/after-effects.png", desc: { fr: "Animation et motion design", en: "Animation and motion design" } },
   { key: "davinciresolve", name: "DaVinci Resolve", logo: "/images/tools/davinci-resolve.png", desc: { fr: "Montage, étalonnage et motion", en: "Editing, grading and motion" } },
   { key: "capcut", name: "CapCut", logo: "/images/tools/capcut.png", desc: { fr: "Vidéos courtes pour les réseaux", en: "Short-form social videos" } },
   { key: "affinitydesigner", name: "Affinity Designer", logo: "/images/tools/affinity-designer.png", desc: { fr: "Logos et identités visuelles", en: "Logos and visual identities" } },
+  { key: "flutter", name: "Flutter", logo: "/images/tools/flutter.png", desc: { fr: "Applications mobiles multiplateformes", en: "Cross-platform mobile apps" } },
   { key: "meta", name: "Meta Ads", logo: "/images/tools/meta-ads.png", desc: { fr: "Campagnes Facebook et Instagram", en: "Facebook and Instagram campaigns" } },
 ];
 

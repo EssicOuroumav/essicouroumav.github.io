@@ -52,3 +52,9 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 - Kateni : en attente (2026-11-08). Le propriétaire refait le design et ajoute de nouvelles données ; ensuite, intégrer ses nouvelles captures (accueil, prédiction, statistiques) dans la carte Kateni. L'accès à l'application est lié à l'appareil (code personnel), donc les captures viendront du propriétaire.
 - Propriétaire : captures de PrixCI, dépôt Kerya, nom exact du projet « Eden ». Fait : partage Figma public, titres des vidéos confirmés, AquaWater = AquaPay.
 - Assistant : audit gitleaks des dépôts à rendre publics, puis publication, puis Lighthouse ×3 sur l'URL publiée.
+
+## v8 (accueil façon Nexora)
+- Accueil allégé : grande carte blanche, mots violets en Poppins 800 (« Designer graphique & UI/UX », « Web, motion & DIGITAL »), panneau violet avec titre, bouton noir, preuve (logos + 29 projets, 3 ans), 3 métiers et projet à la une (AquaPay).
+- Palette violette (#6f52cc, lavande #f1eef8), police Poppins.
+- Cartes projets nettes : plus de flou (backdrop-filter et masques retirés), dégradé limité au bas de la carte, cartes voisines non estompées.
+- Outils : Photoshop, After Effects et Flutter ajoutés (9 outils).
