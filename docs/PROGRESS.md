@@ -67,5 +67,5 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 
 ## v8.2
 - Anneau et objets 3D retirés derrière la photo, remplacés par un décor digital : grille de points, cadre de sélection façon Figma autour du visage, pastilles « </> » et « #6F52CC », curseur nommé « Cisse » (allégé sur mobile).
-- Photo encore agrandie (jusqu'à 980 px), UI/UX et DIGITAL réduits (68 px max).
+- Photo encore agrandie (jusqu'à 980 px), UI/UX et DIGITAL réduits (48 px max sur ordinateur, petites lignes 26 px).
 - Crédits mis à jour (Adobe, Google ; 3dicons retiré).

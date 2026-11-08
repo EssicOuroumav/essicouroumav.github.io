@@ -459,14 +459,14 @@ h3 {
   gap: 14px;
   font-style: italic;
   font-weight: 800;
-  font-size: clamp(20px, 1.9vw, 32px);
+  font-size: clamp(17px, 1.5vw, 26px);
   letter-spacing: -0.02em;
   color: var(--ink);
 }
 
 .nx-word .big {
   font-weight: 800;
-  font-size: clamp(36px, 4.2vw, 68px);
+  font-size: clamp(30px, 3vw, 48px);
   letter-spacing: -0.03em;
   color: var(--accent);
 }
@@ -1817,7 +1817,7 @@ main {
   }
 
   .nx-word .big {
-    font-size: 11vw;
+    font-size: 10vw;
   }
 
   .nx-proof {
