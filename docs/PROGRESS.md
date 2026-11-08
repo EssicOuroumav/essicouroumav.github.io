@@ -64,3 +64,8 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 - Carte Markodience recadrée sur les visages, sans le texte du site sous le titre.
 - Vitesse : images des projets réduites à 1100 px (3,9 Mo -> 1,6 Mo), avatar de 160 px, derniers flous (backdrop-filter) retirés, une seule variante italique de Poppins.
 - Lighthouse mobile avant : performance 38, accessibilité 96, bonnes pratiques 100, SEO 100. À remesurer après publication.
+
+## v8.2
+- Anneau et objets 3D retirés derrière la photo, remplacés par un décor digital : grille de points, cadre de sélection façon Figma autour du visage, pastilles « </> » et « #6F52CC », curseur nommé « Cisse » (allégé sur mobile).
+- Photo encore agrandie (jusqu'à 980 px), UI/UX et DIGITAL réduits (68 px max).
+- Crédits mis à jour (Adobe, Google ; 3dicons retiré).

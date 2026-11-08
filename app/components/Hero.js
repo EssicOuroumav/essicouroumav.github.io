@@ -58,11 +58,25 @@ export default function Hero() {
       </div>
 
       <div className="nx-portrait" aria-hidden="true">
-        <svg className="nx-ring" viewBox="0 0 400 140">
-          <ellipse cx="200" cy="70" rx="190" ry="48" />
-        </svg>
-        <img className="o3d o3d-figma" src={withBase("/images/3d/figma.webp")} alt="" width="360" height="360" />
-        <img className="o3d o3d-video-camera" src={withBase("/images/3d/video-camera.webp")} alt="" width="360" height="360" />
+        {/* Décor « digital » : grille de points et cadre de sélection façon Figma autour du portrait */}
+        <div className="nx-grid" />
+        <div className="nx-frame">
+          <i className="h tl" />
+          <i className="h tr" />
+          <i className="h bl" />
+          <i className="h br" />
+          <span className="nx-frame-size mono">W 1080  H 1080</span>
+        </div>
+        <span className="nx-chip nx-chip-code mono">&lt;/&gt;</span>
+        <span className="nx-chip nx-chip-hex mono">
+          <b /> #6F52CC
+        </span>
+        <span className="nx-cursor">
+          <svg viewBox="0 0 24 24" width="22" height="22">
+            <path d="M4 3l7 18 2.6-7.4L21 11z" />
+          </svg>
+          <span>Cisse</span>
+        </span>
         <img className="nx-photo" src={withBase("/images/cisse-cutout.webp")} alt="" width="900" height="880" fetchPriority="high" />
       </div>
 
