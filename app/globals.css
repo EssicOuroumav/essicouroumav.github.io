@@ -448,8 +448,9 @@ h3 {
 .nx-word {
   display: flex;
   flex-direction: column;
+  gap: 10px;
   margin: 0;
-  line-height: 0.92;
+  line-height: 1;
 }
 
 .nx-word .it {
@@ -495,9 +496,16 @@ h3 {
 .nx-photo {
   width: 100%;
   transform-origin: 50% 90%;
-  transform: rotateY(calc(var(--px) * 10deg)) rotateX(calc(var(--py) * -4deg));
-  filter: drop-shadow(0 30px 40px rgba(40, 28, 80, 0.28));
+  transform: translate3d(calc(var(--px) * 14px), calc(var(--py) * 6px), 0) rotateY(calc(var(--px) * 16deg)) rotateX(calc(var(--py) * -8deg));
+  filter: drop-shadow(calc(var(--px) * -24px) 30px 40px rgba(40, 28, 80, 0.3));
 }
+
+/* Parallaxe : chaque couche du décor bouge à sa propre profondeur selon le curseur */
+.nx-grid { translate: calc(var(--px) * -30px) calc(var(--py) * -18px); }
+.nx-frame { translate: calc(var(--px) * 12px) calc(var(--py) * 6px); }
+.nx-chip-code { translate: calc(var(--px) * -36px) calc(var(--py) * -20px); }
+.nx-chip-hex { translate: calc(var(--px) * -28px) calc(var(--py) * -24px); }
+.nx-cursor { translate: calc(var(--px) * 40px) calc(var(--py) * 26px); }
 
 /* Décor digital : grille de points, cadre de sélection, curseur et pastilles d'interface */
 .nx-grid {

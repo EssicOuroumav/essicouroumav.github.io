@@ -69,3 +69,5 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 - Anneau et objets 3D retirés derrière la photo, remplacés par un décor digital : grille de points, cadre de sélection façon Figma autour du visage, pastilles « </> » et « #6F52CC », curseur nommé « Cisse » (allégé sur mobile).
 - Photo encore agrandie (jusqu'à 980 px), UI/UX et DIGITAL réduits (48 px max sur ordinateur, petites lignes 26 px).
 - Crédits mis à jour (Adobe, Google ; 3dicons retiré).
+- UI/UX ne touche plus la ligne du dessus (interligne 1 et 10 px d'écart).
+- Effet 3D au curseur renforcé : la photo pivote (16° / 8°) avec une ombre qui suit, et le décor bouge en parallaxe à plusieurs profondeurs (ordinateur uniquement, désactivé si l'utilisateur réduit les animations).
