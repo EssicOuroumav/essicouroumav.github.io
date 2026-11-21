@@ -2,9 +2,11 @@
 // pour garder un texte blanc lisible (calculée une fois depuis les images de public/).
 export const tints = {
   "aquapay-web": "#1f3b65",
+  "gescom": "#3a1268",
   "aquapay": "#1f3b65",
   "markodience": "#233661",
   "coupure-af": "#2b3459",
+  "novembre-bleu": "#143a63",
   "octobre-rose": "#59312b",
   "ivert": "#265d39",
   "obraise": "#5a3c2a",

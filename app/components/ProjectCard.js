@@ -1,6 +1,7 @@
 "use client";
 import { ChevronRight, Globe, PlayCircle } from "lucide-react";
 import { tints } from "../tints";
+import { profile } from "../data";
 import { useLang } from "../i18n";
 import { withBase } from "../base";
 import { BrandIcon, LoopVideo } from "./ui";
@@ -73,6 +74,8 @@ export function GlassCard({ p, active = false }) {
   const { t, tr } = useLang();
   const title = tr(p.title);
   const main = p.links.site || p.links.figma || p.links.video || p.links.behance || p.links.github;
+  // Projet privé (outil interne) : démonstration demandée sur WhatsApp, message prérempli.
+  const demo = !main && p.demo ? `${profile.whatsapp}?text=${encodeURIComponent(t.demoMsg.replace("{p}", title))}` : null;
   const extras = [
     p.links.github && main !== p.links.github && { href: p.links.github, label: t.linkCode, icon: <BrandIcon name="github" size={16} color="currentColor" /> },
     p.links.figma && main !== p.links.figma && { href: p.links.figma, label: t.linkFigma, icon: <BrandIcon name="figma" size={16} color="currentColor" /> },
@@ -95,6 +98,12 @@ export function GlassCard({ p, active = false }) {
           {main ? (
             <a className="gcard-btn" href={main} target="_blank" rel="noopener noreferrer" data-cursor="view">
               {t.open}
+              <ChevronRight size={18} aria-hidden="true" />
+              <span className="sr-only"> : {title} {t.newTab}</span>
+            </a>
+          ) : demo ? (
+            <a className="gcard-btn" href={demo} target="_blank" rel="noopener noreferrer">
+              {t.demo}
               <ChevronRight size={18} aria-hidden="true" />
               <span className="sr-only"> : {title} {t.newTab}</span>
             </a>

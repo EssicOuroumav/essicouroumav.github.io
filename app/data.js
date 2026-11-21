@@ -103,6 +103,22 @@ export const projects = [
     links: { site: "https://markodience.vercel.app", github: "https://github.com/EssicOuroumav/Markodience" },
   },
   {
+    key: "gescom",
+    title: "GESCOM",
+    client: "Civ'Art",
+    category: "web",
+    visual: "image",
+    featured: true,
+    image: "/images/projects/gescom.jpg",
+    tags: ["Next.js", "Supabase", "PWA hors ligne"],
+    desc: {
+      fr: "CRM de Civ'Art, du premier message au paiement : contacts et parcours client, devis, factures, paiements et projets, sur ordinateur et téléphone, même sans réseau.",
+      en: "Civ'Art's CRM, from first message to payment: contacts and sales pipeline, quotes, invoices, payments and projects, on desktop and phone, even offline.",
+    },
+    demo: true,
+    links: {},
+  },
+  {
     key: "aquapay",
     title: "AquaPay",
     client: { fr: "Eau prépayée", en: "Prepaid water" },
@@ -148,6 +164,7 @@ export const projects = [
     },
     links: { figma: "https://www.figma.com/design/3hiEXTUINIDBVY7tBaggld/Projet-nike?node-id=1104-532" },
   },
+  motion("novembre-bleu", "Novembre Bleu", "ONG AICHA", "Campagne de sensibilisation au dépistage du cancer de la prostate pour Novembre Bleu : signes d'alerte, consultation, mobilisation des hommes.", "Prostate cancer screening awareness campaign for Blue November: warning signs, seeing a doctor, getting men involved.", true),
   motion("octobre-rose", "La Minute Rose", "ONG AICHA", "Film de sensibilisation au dépistage du cancer du sein pour Octobre Rose.", "Breast cancer screening awareness film for Pink October.", true),
   {
     key: "ivert",

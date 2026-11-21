@@ -71,3 +71,9 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 - Crédits mis à jour (Adobe, Google ; 3dicons retiré).
 - UI/UX ne touche plus la ligne du dessus (interligne 1 et 10 px d'écart).
 - Effet 3D au curseur renforcé : la photo pivote (16° / 8°) avec une ombre qui suit, et le décor bouge en parallaxe à plusieurs profondeurs (ordinateur uniquement, désactivé si l'utilisateur réduit les animations).
+
+## v8.3 (2026-11-21)
+- Novembre Bleu (ONG AICHA, campagne cancer de la prostate) : version v8 demandée par le propriétaire, extrait de 8 s (14-22 s, 440 Ko), aperçu centré (visage à 20 s), à la une ; fin de vidéo évitée (numéros de téléphone en clair).
+- GESCOM (CRM de Civ'Art) : mockup ordinateur + 2 téléphones à partir de vraies captures web (Chrome) et mobiles (Galaxy S21 par adb) faites avec des données fictives créées pour l'occasion (3 contacts, 1 devis CIVART-DV-2026-002, 1 projet, 1 facture d'acompte laissée en brouillon, notes « DONNÉE FICTIVE ») ; le vrai contact masqué à l'écran pendant les captures. Dépôt gardé privé ; bouton « Démo sur demande » qui ouvre WhatsApp avec un message prérempli.
+- Constats : base Supabase de GESCOM en pause (NXDOMAIN), restaurée par le propriétaire ; restauration ≈ 10 min (503 puis 404 « schema cache » puis normal). Sur téléphone, le tableau de bord de GESCOM déborde en largeur (nom de projet long) : à corriger dans GESCOM.
+- À faire par le propriétaire : archiver les données fictives dans GESCOM.
