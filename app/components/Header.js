@@ -20,6 +20,13 @@ export default function Header() {
             {t.nav[i]}
           </a>
         ))}
+        <span className="founder-pill">
+          <img src={withBase("/images/civart-logo.jpg")} alt="Logo Civ'Art" width="160" height="160" />
+          <span>
+            {t.founderPre} <b>Civ&apos;Art</b>
+            <small>{t.founderSub}</small>
+          </span>
+        </span>
       </nav>
       <div className="brand">
         <a href={withBase("/")} className="wordmark">

@@ -379,6 +379,41 @@ h3 {
   text-decoration: none;
 }
 
+.founder-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 16px 5px 5px;
+  border-radius: 999px;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  box-shadow: 0 8px 24px -14px rgba(40, 28, 80, 0.35);
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.founder-pill img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+.founder-pill b {
+  font-weight: 700;
+  color: var(--accent-text);
+}
+
+.founder-pill small {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+}
+
 .brand {
   display: flex;
   flex-direction: column;
@@ -387,7 +422,8 @@ h3 {
 }
 
 .brand-sub {
-  display: inline-flex;
+  display: none;
+  white-space: nowrap;
   align-items: center;
   gap: 6px;
   margin: 0;
@@ -1678,6 +1714,31 @@ main {
   }
 }
 
+@media (max-width: 1280px) {
+  .founder-pill small {
+    display: none;
+  }
+
+  .founder-pill {
+    padding-right: 12px;
+  }
+
+  .founder-pill img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 1320px) {
+  .founder-pill {
+    display: none;
+  }
+
+  .brand-sub {
+    display: inline-flex;
+  }
+}
+
 /* Écrans moyens */
 @media (max-width: 1180px) {
   .nx-panel {
@@ -1705,6 +1766,14 @@ main {
 
   .wordmark {
     font-size: 17px;
+  }
+
+  .founder-pill {
+    display: none;
+  }
+
+  .brand-sub {
+    display: inline-flex;
   }
 
   .brand {
