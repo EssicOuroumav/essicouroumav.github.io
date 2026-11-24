@@ -379,6 +379,35 @@ h3 {
   text-decoration: none;
 }
 
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.brand-sub {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.brand-sub img {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.brand-sub b {
+  font-weight: 700;
+  color: var(--ink);
+}
+
 .wordmark b {
   font-weight: 800;
 }
@@ -645,37 +674,6 @@ h3 {
   margin: 0 0 14px;
   font-weight: 500;
   font-size: 15px;
-}
-
-.nx-founder {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 18px;
-  padding: 6px 16px 6px 6px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  font-size: 14px;
-  line-height: 1.25;
-}
-
-.nx-founder img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.9);
-}
-
-.nx-founder b {
-  font-weight: 700;
-}
-
-.nx-founder small {
-  display: block;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.82);
 }
 
 .nx-title {
@@ -1707,7 +1705,16 @@ main {
 
   .wordmark {
     font-size: 17px;
+  }
+
+  .brand {
     justify-self: start;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .brand-sub {
+    font-size: 11px;
   }
 
   .nx {

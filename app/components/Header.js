@@ -21,10 +21,17 @@ export default function Header() {
           </a>
         ))}
       </nav>
-      <a href={withBase("/")} className="wordmark">
-        <span className="wordmark-dot" aria-hidden="true" />
-        cisse<b>vamourou</b>
-      </a>
+      <div className="brand">
+        <a href={withBase("/")} className="wordmark">
+          <span className="wordmark-dot" aria-hidden="true" />
+          cisse<b>vamourou</b>
+        </a>
+        <p className="brand-sub">
+          {t.founderPre}
+          <img src={withBase("/images/civart-logo.jpg")} alt="" width="160" height="160" />
+          <b>Civ&apos;Art</b>
+        </p>
+      </div>
       <div className="top-right">
         <span className="pill ghost clock mono">
           ABJ <LiveClock timeZone={profile.timeZone} />

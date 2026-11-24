@@ -80,3 +80,4 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 
 ## v8.4 (2026-11-24)
 - Accueil : pastille « Fondateur de Civ'Art » (logo officiel tiré de GESCOM, 160 px) sous « Disponible en indépendant », FR et EN.
+- 2026-11-24 : mention déplacée sous le nom, dans l'en-tête (« Fondateur de [logo] Civ'Art », visible sur toutes les pages) ; la pastille du panneau violet se collait à « Disponible en indépendant » sur grand écran.
