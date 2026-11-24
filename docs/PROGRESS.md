@@ -77,3 +77,6 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 - GESCOM (CRM de Civ'Art) : mockup ordinateur + 2 téléphones à partir de vraies captures web (Chrome) et mobiles (Galaxy S21 par adb) faites avec des données fictives créées pour l'occasion (3 contacts, 1 devis CIVART-DV-2026-002, 1 projet, 1 facture d'acompte laissée en brouillon, notes « DONNÉE FICTIVE ») ; le vrai contact masqué à l'écran pendant les captures. Dépôt gardé privé ; bouton « Démo sur demande » qui ouvre WhatsApp avec un message prérempli.
 - Constats : base Supabase de GESCOM en pause (NXDOMAIN), restaurée par le propriétaire ; restauration ≈ 10 min (503 puis 404 « schema cache » puis normal). Sur téléphone, le tableau de bord de GESCOM déborde en largeur (nom de projet long) : à corriger dans GESCOM.
 - À faire par le propriétaire : archiver les données fictives dans GESCOM.
+
+## v8.4 (2026-11-24)
+- Accueil : pastille « Fondateur de Civ'Art » (logo officiel tiré de GESCOM, 160 px) sous « Disponible en indépendant », FR et EN.

@@ -85,6 +85,13 @@ export default function Hero() {
           <p className="nx-tag">
             <Sparkles size={16} aria-hidden="true" /> {t.status}
           </p>
+          <p className="nx-founder">
+            <img src={withBase("/images/civart-logo.jpg")} alt="Logo Civ'Art" width="160" height="160" />
+            <span>
+              {t.founderPre} <b>Civ&apos;Art</b>
+              <small>{t.founderSub}</small>
+            </span>
+          </p>
           <h1 className="nx-title">
             <span className="sr-only">{profile.name}, </span>
             {t.heroTitle}
