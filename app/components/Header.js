@@ -20,24 +20,26 @@ export default function Header() {
             {t.nav[i]}
           </a>
         ))}
-        <span className="founder-pill">
+        <a className="founder-pill" href={profile.civart} target="_blank" rel="noopener noreferrer">
           <img src={withBase("/images/civart-logo.jpg")} alt="Logo Civ'Art" width="160" height="160" />
           <span>
             {t.founderPre} <b>Civ&apos;Art</b>
             <small>{t.founderSub}</small>
           </span>
-        </span>
+          <span className="sr-only"> {t.newTab}</span>
+        </a>
       </nav>
       <div className="brand">
         <a href={withBase("/")} className="wordmark">
           <span className="wordmark-dot" aria-hidden="true" />
           cisse<b>vamourou</b>
         </a>
-        <p className="brand-sub">
+        <a className="brand-sub" href={profile.civart} target="_blank" rel="noopener noreferrer">
           {t.founderPre}
           <img src={withBase("/images/civart-logo.jpg")} alt="" width="160" height="160" />
           <b>Civ&apos;Art</b>
-        </p>
+          <span className="sr-only"> {t.newTab}</span>
+        </a>
       </div>
       <div className="top-right">
         <span className="pill ghost clock mono">

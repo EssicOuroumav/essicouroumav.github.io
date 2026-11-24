@@ -8,6 +8,7 @@ export const profile = {
   email: "vamourou.ciisse@gmail.com",
   whatsapp: "https://wa.me/2250777543648",
   whatsappLabel: "+225 07 77 54 36 48",
+  civart: "https://linktr.ee/civart.ci",
   behance: "https://www.behance.net/essicouroumav",
   photo: "/images/cisse-avatar.jpg",
   experienceYears: 3,
