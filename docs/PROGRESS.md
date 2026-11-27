@@ -100,3 +100,9 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 - Projet à la une : Markodience (en ligne) à la place d'AquaPay (pas encore en ligne).
 - LinkedIn ajouté au contact et au pied de page ; Civ'Art (Linktree) dans le pied de page.
 - Bouton « Devis gratuit » dans l'accueil : WhatsApp avec message prérempli.
+
+## v9.2 (2026-11-27) : galerie Design graphique
+- Nouvelle page `/design-graphique/` : 125 visuels (flyers, affiches, carrousels, kakémonos, photocalls, e-books, logos) répartis en 10 catégories, avec filtres, une mosaïque et une vue agrandie (clavier : flèches, Échap). Aucun lien externe (pas de Mega).
+- Visuels issus du dossier `design` du Bureau, convertis en WebP (1400 px max, 2000 px pour les kakémonos), 14 Mo au total ; première page des PDF ; un doublon écarté. Données dans `app/designs.js`.
+- Compétences : cartes au format des projets (visuel dégagé, texte sur fond clair) avec un lien « Voir les réalisations » (Design graphique vers la galerie, les autres vers les filtres de /projets/).
+- Bandeau vers la galerie en bas de /projets/ ; page ajoutée au sitemap et à `scripts/check.mjs`.

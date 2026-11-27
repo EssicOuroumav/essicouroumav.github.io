@@ -1,11 +1,15 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { categories, projects } from "../data";
 import { useLang } from "../i18n";
 import { withBase } from "../base";
 import { GlassCard } from "./ProjectCard";
 import { SectionHead } from "./Sections";
+import { designCategories } from "../designs";
+
+const designCount = designCategories.reduce((n, c) => n + c.items.length, 0);
+const designPreview = ["medical", "organisations", "restauration"].map((k) => designCategories.find((c) => c.key === k).items[3].src);
 
 const featured = projects.filter((p) => p.featured);
 
@@ -129,6 +133,20 @@ export function ProjectsGrid() {
           <GlassCard key={p.key} p={p} />
         ))}
       </div>
+      <a className="dg-cta" href={withBase("/design-graphique/")} data-cursor="view">
+        <span className="dg-cta-pics" aria-hidden="true">
+          {designPreview.map((src) => (
+            <img key={src} src={withBase(src)} alt="" width="160" height="200" loading="lazy" />
+          ))}
+        </span>
+        <span className="dg-cta-text">
+          <b>{t.designCta}</b>
+          <small>
+            {t.designCtaSub} · {designCount}
+          </small>
+        </span>
+        <ArrowRight size={22} aria-hidden="true" />
+      </a>
     </section>
   );
 }

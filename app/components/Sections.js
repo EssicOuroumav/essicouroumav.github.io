@@ -1,5 +1,8 @@
 "use client";
-import { Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
+
+// Où mène chaque carte Compétences.
+const skillHref = { graphic: "/design-graphique/", uiux: "/projets/#uiux", web: "/projets/#web", motion: "/projets/#motion" };
 import { certifications, journey, profile, services, tools } from "../data";
 import { useLang } from "../i18n";
 import { withBase } from "../base";
@@ -51,16 +54,30 @@ export function Skills() {
     <section id="skills" className="sec">
       <SectionHead index={2} kicker={t.skillsKicker} title={t.skillsH} intro={t.skillsP} />
       <div className="skills">
-        {services.map((s, i) => (
-          <article key={s.key} className={`skill skill-${i + 1}`} data-reveal>
-            <img src={withBase(s.image)} alt="" loading="lazy" width="1400" height="1094" />
-            <div className="skill-body">
-              <span className="mono skill-index">{String(i + 1).padStart(2, "0")}</span>
-              <h3>{tr(s.title)}</h3>
-              <p>{tr(s.desc)}</p>
-            </div>
-          </article>
-        ))}
+        {services.map((s, i) => {
+          const href = withBase(skillHref[s.key] || "/projets/");
+          return (
+            <article key={s.key} className={`pcard skill skill-${i + 1}`} data-reveal>
+              <a className="pcard-media skill-media" href={href} data-cursor="view" tabIndex={-1} aria-hidden="true">
+                <img src={withBase(s.image)} alt="" loading="lazy" width="1400" height="1094" />
+              </a>
+              <div className="pcard-body">
+                <p className="pcard-meta">
+                  <span className="pcard-chip mono">{String(i + 1).padStart(2, "0")}</span>
+                </p>
+                <h3>
+                  <a href={href}>{tr(s.title)}</a>
+                </h3>
+                <p className="pcard-desc">{tr(s.desc)}</p>
+                <div className="pcard-actions">
+                  <a className="pcard-btn ghost" href={href}>
+                    {t.skillMore} <ArrowRight size={16} aria-hidden="true" />
+                  </a>
+                </div>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );

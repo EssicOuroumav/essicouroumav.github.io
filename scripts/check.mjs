@@ -41,7 +41,7 @@ const OUT = "out";
 if (!existsSync(OUT)) {
   fail("dossier out/ absent : lance npm run build");
 } else {
-  for (const f of ["index.html", "404.html", "mentions-legales/index.html", "sitemap.xml", "robots.txt", "og.jpg", "icon.png", "apple-icon.png", "projets/index.html", "projets/markodience/index.html", "projets/novembre-bleu/index.html", "images/tools/figma.png"]) {
+  for (const f of ["index.html", "404.html", "mentions-legales/index.html", "sitemap.xml", "robots.txt", "og.jpg", "icon.png", "apple-icon.png", "projets/index.html", "design-graphique/index.html", "projets/markodience/index.html", "projets/novembre-bleu/index.html", "images/tools/figma.png"]) {
     if (!existsSync(join(OUT, f))) fail(`fichier attendu absent : out/${f}`);
   }
 
