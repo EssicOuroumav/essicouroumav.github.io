@@ -94,7 +94,7 @@ export const projects = [
     category: "web",
     visual: "browser",
     featured: true,
-    image: "/images/projects/markodience-card.jpg",
+    image: "/images/projects/markodience.jpg",
     logo: "/images/logos/markodience.png",
     tags: ["Next.js", "Supabase", "IA"],
     desc: {

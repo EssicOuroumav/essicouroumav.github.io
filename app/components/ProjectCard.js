@@ -29,7 +29,7 @@ export function ProjectVisual({ p, title, hoverTarget, eager = false }) {
             <i />
             <span className="mono">{p.links.site ? host(p.links.site) : title}</span>
           </div>
-          <img src={withBase(p.image)} alt={title} loading={eager ? "eager" : "lazy"} width="1400" height="875" />
+          <img src={withBase(p.image)} alt={title} loading={eager ? "eager" : "lazy"} width="1600" height="1000" />
         </div>
       </div>
     );

@@ -1681,19 +1681,20 @@ main {
 }
 
 .pv-browser {
+  display: grid;
+  place-items: center;
+  padding: 7%;
   background: radial-gradient(120% 90% at 20% 0%, #a996e8 0%, var(--accent-strong) 55%, var(--night) 100%);
 }
 
+/* Cadre de navigateur : la capture entière (16:10) tient dans la carte, sans recadrage. */
 .browser {
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  top: 10%;
-  bottom: -4%;
-  border-radius: 14px 14px 0 0;
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 24px 40px -24px rgba(0, 0, 0, 0.6);
   transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
@@ -1701,7 +1702,7 @@ main {
   display: flex;
   align-items: center;
   gap: 6px;
-  height: 30px;
+  height: 24px;
   padding: 0 12px;
   background: #f4e4db;
 }
@@ -1724,8 +1725,10 @@ main {
 }
 
 .browser img {
+  display: block;
   width: 100%;
-  height: calc(100% - 30px);
+  height: auto;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: top center;
 }
