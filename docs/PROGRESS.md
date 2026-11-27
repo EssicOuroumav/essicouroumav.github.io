@@ -83,3 +83,9 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 - 2026-11-24 : mention déplacée sous le nom, dans l'en-tête (« Fondateur de [logo] Civ'Art », visible sur toutes les pages) ; la pastille du panneau violet se collait à « Disponible en indépendant » sur grand écran.
 - 2026-11-24 : à la demande du propriétaire, pastille arrondie (logo + « Fondateur de Civ'Art » + « Studio créatif · Abidjan ») remise dans la ligne Accueil / Projets / Parcours ; sous 1320 px (et sur mobile) elle laisse place à la ligne sous le nom, pour ne pas toucher le nom ni faire déborder l'en-tête.
 - 2026-11-24 : pastille et ligne « Fondateur de Civ'Art » cliquables vers https://linktr.ee/civart.ci (nouvel onglet, lien vérifié : 200).
+
+## v9 (2026-11-27) : cartes et pages projet
+- Inspiré de la page Projets de référence (adelynnemalubay.vercel.app) : capture dégagée en haut de la carte, bloc clair en dessous avec catégorie, client, titre, description, outils, bouton « Voir le projet » (page détail) et lien principal (site, vidéo, Behance, Figma, code ou démo). Même carte dans le carrousel de l'accueil et la grille /projets/.
+- Une page statique par projet (/projets/<clé>/, 31 pages, dans le sitemap, contrôlées par scripts/check.mjs) : titre, description, grand visuel (vidéo jouée à l'écran), outils, tous les liens, « Le défi / La réponse / Le résultat » pour 7 projets phares (Markodience, GESCOM, AquaPay, PrixCI, IVERT, ONG AICHA, Novembre Bleu), puis 3 autres projets.
+- Textes « défi / réponse / résultat » rédigés d'après les projets : à valider par le propriétaire (aucun chiffre ajouté). Corrigé avant envoi : titres de la page détail invisibles en mode sombre.
+- Pas d'année affichée : aucune source fiable pour la date de chaque projet.

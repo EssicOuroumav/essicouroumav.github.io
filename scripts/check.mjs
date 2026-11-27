@@ -41,7 +41,7 @@ const OUT = "out";
 if (!existsSync(OUT)) {
   fail("dossier out/ absent : lance npm run build");
 } else {
-  for (const f of ["index.html", "404.html", "mentions-legales/index.html", "sitemap.xml", "robots.txt", "og.jpg", "icon.png", "apple-icon.png", "projets/index.html", "images/tools/figma.png"]) {
+  for (const f of ["index.html", "404.html", "mentions-legales/index.html", "sitemap.xml", "robots.txt", "og.jpg", "icon.png", "apple-icon.png", "projets/index.html", "projets/markodience/index.html", "projets/novembre-bleu/index.html", "images/tools/figma.png"]) {
     if (!existsSync(join(OUT, f))) fail(`fichier attendu absent : out/${f}`);
   }
 
@@ -64,6 +64,9 @@ if (!existsSync(OUT)) {
   ];
   // Emoji et symboles typographiques utilisés comme icônes (règle : vraies icônes uniquement).
   const emoji = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}•✓✔×]/u;
+
+  // Une page détail par projet.
+  for (const p of data.projects) if (!existsSync(join(OUT, "projets", p.key, "index.html"))) fail(`page détail absente : projets/${p.key}/`);
 
   for (const f of files) {
     if (/\.(mp4|webm)$/.test(f) && statSync(f).size > 5 * 1024 * 1024) fail(`vidéo trop lourde (> 5 Mo) : ${f}`);

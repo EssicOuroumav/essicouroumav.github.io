@@ -1,5 +1,5 @@
 "use client";
-import { ChevronRight, Globe, PlayCircle } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Globe, MessageCircle, PlayCircle } from "lucide-react";
 import { tints } from "../tints";
 import { profile } from "../data";
 import { useLang } from "../i18n";
@@ -8,8 +8,10 @@ import { BrandIcon, LoopVideo } from "./ui";
 
 const host = (url) => url.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
+export const detailHref = (p) => withBase(`/projets/${p.key}/`);
+
 // Visuel d'un projet selon son type (capture dans un navigateur, image, logo de marque ou vidéo).
-export function ProjectVisual({ p, title, hoverTarget }) {
+export function ProjectVisual({ p, title, hoverTarget, eager = false }) {
   if (p.visual === "video") {
     return (
       <div className="pv pv-video">
@@ -27,7 +29,7 @@ export function ProjectVisual({ p, title, hoverTarget }) {
             <i />
             <span className="mono">{p.links.site ? host(p.links.site) : title}</span>
           </div>
-          <img src={withBase(p.image)} alt={title} loading="lazy" width="1400" height="875" />
+          <img src={withBase(p.image)} alt={title} loading={eager ? "eager" : "lazy"} width="1400" height="875" />
         </div>
       </div>
     );
@@ -35,86 +37,68 @@ export function ProjectVisual({ p, title, hoverTarget }) {
   if (p.visual === "brand") {
     return (
       <div className="pv pv-brand" style={{ "--tint": p.tint }}>
-        <img src={withBase(p.logo)} alt={`Logo ${title}`} loading="lazy" width="400" height="400" />
+        <img src={withBase(p.logo)} alt={`Logo ${title}`} loading={eager ? "eager" : "lazy"} width="400" height="400" />
       </div>
     );
   }
   return (
     <div className="pv pv-image">
-      <img src={withBase(p.image)} alt={title} loading="lazy" width="1400" height="1094" />
+      <img src={withBase(p.image)} alt={title} loading={eager ? "eager" : "lazy"} width="1400" height="1094" />
     </div>
   );
 }
 
-export function ProjectLinks({ links }) {
-  const { t } = useLang();
-  const items = [
-    links.site && { href: links.site, label: t.linkSite, icon: <Globe size={15} aria-hidden="true" /> },
-    links.figma && { href: links.figma, label: t.linkFigma, icon: <BrandIcon name="figma" size={15} color="currentColor" /> },
-    links.video && { href: links.video, label: t.linkVideo, icon: <PlayCircle size={15} aria-hidden="true" /> },
-    links.behance && { href: links.behance, label: t.linkBehance, icon: <BrandIcon name="behance" size={15} color="currentColor" /> },
-    links.github && { href: links.github, label: t.linkCode, icon: <BrandIcon name="github" size={15} color="currentColor" /> },
+// Tous les liens externes d'un projet, dans l'ordre de priorité (le premier est le lien principal).
+export function projectLinks(p, t, title) {
+  const demo = p.demo ? `${profile.whatsapp}?text=${encodeURIComponent(t.demoMsg.replace("{p}", title))}` : null;
+  return [
+    p.links.site && { href: p.links.site, label: t.linkSite, icon: <Globe size={16} aria-hidden="true" /> },
+    p.links.video && { href: p.links.video, label: t.linkVideo, icon: <PlayCircle size={16} aria-hidden="true" /> },
+    p.links.behance && { href: p.links.behance, label: t.linkBehance, icon: <BrandIcon name="behance" size={16} color="currentColor" /> },
+    p.links.figma && { href: p.links.figma, label: t.linkFigma, icon: <BrandIcon name="figma" size={16} color="currentColor" /> },
+    p.links.github && { href: p.links.github, label: t.linkCode, icon: <BrandIcon name="github" size={16} color="currentColor" /> },
+    demo && { href: demo, label: t.demo, icon: <MessageCircle size={16} aria-hidden="true" /> },
   ].filter(Boolean);
-  if (!items.length) return <p className="links-soon mono">{t.soon}</p>;
-  return (
-    <div className="links">
-      {items.map((l) => (
-        <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer">
-          {l.icon} {l.label}
-          <span className="sr-only"> {t.newTab}</span>
-        </a>
-      ))}
-    </div>
-  );
 }
 
-// Carte de projet façon « carte de destination » : visuel plein cadre, fondu teinté par la couleur
-// dominante du projet, titre, ligne d'informations et bouton en verre ; liens secondaires en icônes.
+// Carte de projet : capture dégagée en haut, informations sur fond clair en dessous
+// (catégorie, client, titre, description, outils, page détail + lien principal).
 export function GlassCard({ p, active = false }) {
   const { t, tr } = useLang();
   const title = tr(p.title);
-  const main = p.links.site || p.links.figma || p.links.video || p.links.behance || p.links.github;
-  // Projet privé (outil interne) : démonstration demandée sur WhatsApp, message prérempli.
-  const demo = !main && p.demo ? `${profile.whatsapp}?text=${encodeURIComponent(t.demoMsg.replace("{p}", title))}` : null;
-  const extras = [
-    p.links.github && main !== p.links.github && { href: p.links.github, label: t.linkCode, icon: <BrandIcon name="github" size={16} color="currentColor" /> },
-    p.links.figma && main !== p.links.figma && { href: p.links.figma, label: t.linkFigma, icon: <BrandIcon name="figma" size={16} color="currentColor" /> },
-    p.links.behance && main !== p.links.behance && { href: p.links.behance, label: t.linkBehance, icon: <BrandIcon name="behance" size={16} color="currentColor" /> },
-  ].filter(Boolean);
+  const links = projectLinks(p, t, title);
+  const main = links[0];
   return (
-    <article className={active ? "gcard is-active" : "gcard"} style={{ "--tint": tints[p.key] || p.tint || "#3b2463" }}>
-      <div className="gcard-media">
-        <ProjectVisual p={p} title={title} hoverTarget=".gcard" />
-      </div>
-      <div className="gcard-fade" aria-hidden="true" />
-      <div className="gcard-body">
-        <h3>{title}</h3>
-        <p>
-          {tr(p.client)}
-          <i className="dot-sep" aria-hidden="true" />
-          {t.filters[p.category]}
+    <article className={active ? "pcard is-active" : "pcard"} style={{ "--tint": tints[p.key] || p.tint || "#3b2463" }}>
+      <a className="pcard-media" href={detailHref(p)} data-cursor="view" aria-label={`${t.viewDetails} : ${title}`}>
+        <ProjectVisual p={p} title={title} hoverTarget=".pcard" />
+      </a>
+      <div className="pcard-body">
+        <p className="pcard-meta">
+          <span className="pcard-chip">{t.filters[p.category]}</span>
+          <span>{tr(p.client)}</span>
         </p>
-        <div className="gcard-actions">
+        <h3>
+          <a href={detailHref(p)}>{title}</a>
+        </h3>
+        <p className="pcard-desc">{tr(p.desc)}</p>
+        <ul className="pcard-tags">
+          {p.tags.map((tag) => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
+        <div className="pcard-actions">
+          <a className="pcard-btn" href={detailHref(p)}>
+            {t.viewDetails} <ArrowRight size={16} aria-hidden="true" />
+          </a>
           {main ? (
-            <a className="gcard-btn" href={main} target="_blank" rel="noopener noreferrer" data-cursor="view">
-              {t.open}
-              <ChevronRight size={18} aria-hidden="true" />
-              <span className="sr-only"> : {title} {t.newTab}</span>
-            </a>
-          ) : demo ? (
-            <a className="gcard-btn" href={demo} target="_blank" rel="noopener noreferrer">
-              {t.demo}
-              <ChevronRight size={18} aria-hidden="true" />
+            <a className="pcard-btn ghost" href={main.href} target="_blank" rel="noopener noreferrer">
+              {main.label} <ArrowUpRight size={16} aria-hidden="true" />
               <span className="sr-only"> : {title} {t.newTab}</span>
             </a>
           ) : (
-            <span className="gcard-btn is-muted">{t.soon}</span>
+            <span className="pcard-btn ghost is-muted">{t.soon}</span>
           )}
-          {extras.map((l) => (
-            <a key={l.href} className="gcard-icon" href={l.href} target="_blank" rel="noopener noreferrer" aria-label={`${l.label} : ${title} ${t.newTab}`} title={l.label}>
-              {l.icon}
-            </a>
-          ))}
         </div>
       </div>
     </article>

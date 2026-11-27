@@ -1018,7 +1018,7 @@ main {
 
 .carousel-track {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 28px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -1052,71 +1052,157 @@ main {
   cursor: default;
 }
 
-/* Carte de projet façon « carte de destination » */
-.gcard {
+/* Carte de projet : capture dégagée en haut, informations sur fond clair en dessous */
+.pcard {
   --tint: #3b2463;
-  position: relative;
-  height: 440px;
-  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 24px;
   overflow: hidden;
-  isolation: isolate;
-  color: #fff;
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 36px -28px rgba(40, 28, 80, 0.45);
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.4s ease;
+}
+
+.carousel .pcard {
+  transform: scale(0.95);
+}
+
+.carousel .pcard.is-active {
+  transform: translateY(-18px) scale(1.03);
+  box-shadow: 0 30px 50px -30px rgba(40, 28, 80, 0.55);
+}
+
+.cards-grid .pcard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 50px -30px rgba(40, 28, 80, 0.55);
+}
+
+.pcard-media {
+  display: block;
+  aspect-ratio: 4 / 3;
   background: var(--tint);
-  box-shadow: 0 18px 30px -20px color-mix(in srgb, var(--tint) 70%, transparent);
-  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.5s ease, box-shadow 0.5s ease;
+  overflow: hidden;
 }
 
-.carousel .gcard {
-  transform: scale(0.94);
+.pcard:hover .pv > img,
+.pcard:hover .pv > video,
+.pcard:hover .browser,
+.pcard:hover .pv-brand img {
+  transform: scale(1.04);
 }
 
-.carousel .gcard.is-active {
-  opacity: 1;
-  transform: translateY(-26px) scale(1.06);
-  box-shadow: 0 26px 40px -22px color-mix(in srgb, var(--tint) 80%, transparent);
+.pcard-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px 22px 22px;
+  color: var(--ink);
 }
 
-.cards-grid .gcard:hover {
-  transform: translateY(-10px);
+.pcard-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 0 10px;
+  font-size: 12px;
+  color: var(--muted);
 }
 
-.gcard-media {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
+.pcard-chip {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  font-weight: 600;
 }
 
-.gcard-fade {
-  position: absolute;
-  inset: 50% 0 0;
-  z-index: -1;
-  background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--tint) 75%, transparent) 38%, var(--tint) 62%);
+[data-theme="dark"] .pcard-chip {
+  background: rgba(185, 166, 245, 0.14);
 }
 
-.gcard:hover .pv > img,
-.gcard:hover .pv > video,
-.gcard:hover .browser,
-.gcard:hover .pv-brand img {
-  transform: scale(1.05);
-}
-
-.gcard-body {
-  position: absolute;
-  inset: auto 0 0;
-  padding: 26px;
-}
-
-.gcard h3 {
-  font-size: 26px;
+.pcard h3 {
+  margin: 0;
+  font-size: 21px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.15;
+  line-height: 1.2;
 }
 
-.gcard-body > p {
-  margin: 6px 0 16px;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.82);
+.pcard h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.pcard h3 a:hover {
+  color: var(--accent-text);
+}
+
+.pcard-desc {
+  margin: 8px 0 14px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.pcard-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.pcard-tags li {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.pcard-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.pcard-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.pcard-btn:hover {
+  background: var(--accent-strong);
+}
+
+.pcard-btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.pcard-btn.ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+.pcard-btn.is-muted {
+  color: var(--muted);
 }
 
 .dot-sep {
@@ -1129,45 +1215,160 @@ main {
   vertical-align: middle;
 }
 
-.gcard-actions {
+/* Page détail d'un projet */
+.pd {
+  padding-top: 130px;
+}
+
+.pd-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 26px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.pd-back:hover {
+  color: var(--accent-text);
+}
+
+.pd-meta {
+  justify-content: flex-start;
+}
+
+.pd-title {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.pd-lead {
+  max-width: 720px;
+  margin: 16px 0 34px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.pd-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 28px;
+  align-items: start;
+}
+
+.pd-media {
+  aspect-ratio: 4 / 3;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--tint);
+  box-shadow: 0 30px 60px -40px rgba(40, 28, 80, 0.6);
+}
+
+.pd-side {
+  padding: 24px;
+  border-radius: 24px;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+
+.pd-side h2 {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.pd-side .pcard-tags {
+  margin-bottom: 24px;
+}
+
+.pd-links {
   display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
-.gcard-btn,
-.gcard-icon {
-  display: inline-flex;
-  align-items: center;
-  border-radius: 14px;
-  background: rgba(0, 0, 0, 0.32);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #fff;
-  text-decoration: none;
-  transition: background 0.25s ease;
+.pd-links .pcard-btn {
+  justify-content: flex-start;
 }
 
-.gcard-btn {
-  flex: 1;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 13px 16px;
+.pd-links .pcard-btn svg:last-of-type {
+  margin-left: auto;
+}
+
+.pd-soon {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.pd-story {
+  margin-top: 80px;
+}
+
+.pd-story > h2,
+.pd-more > h2 {
+  color: var(--ink);
+  margin: 6px 0 26px;
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.pd-story-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.pd-step {
+  padding: 26px;
+  border-radius: 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+
+.pd-step span {
+  color: var(--accent-text);
+  font-size: 13px;
+}
+
+.pd-step h3 {
+  color: var(--ink);
+  margin: 10px 0 10px;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.pd-step p {
+  margin: 0;
   font-size: 15px;
-  font-weight: 500;
+  line-height: 1.6;
+  color: var(--muted);
 }
 
-.gcard-btn.is-muted {
-  color: rgba(255, 255, 255, 0.75);
+.pd-more {
+  margin-top: 80px;
 }
 
-.gcard-icon {
-  flex: none;
-  width: 48px;
-  justify-content: center;
-}
+@media (max-width: 900px) {
+  .pd {
+    padding-top: 110px;
+  }
 
-.gcard-btn:hover,
-.gcard-icon:hover {
-  background: rgba(255, 255, 255, 0.22);
+  .pd-grid,
+  .pd-story-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .cards-grid {
@@ -1852,10 +2053,6 @@ main {
     flex-basis: 84vw;
   }
 
-  .gcard {
-    height: 92vw;
-    max-height: 420px;
-  }
 
   .carousel-track {
     padding: 40px 11vw 60px;

@@ -441,3 +441,106 @@ export const certifications = [
   { fr: "Appliquer l'IA : analyser les avis des clients, Cybastion IT Academy", en: "Applied AI: analysing customer reviews, Cybastion IT Academy" },
   { fr: "Informatique & équipements mobiles, Cisco Networking Academy", en: "IT & mobile devices, Cisco Networking Academy" },
 ];
+
+// Récit des projets phares sur leur page détail : le défi, la réponse, le résultat.
+// Textes rédigés d'après les projets eux-mêmes, à faire valider par le propriétaire.
+export const stories = {
+  markodience: {
+    challenge: {
+      fr: "Les community managers jonglent entre stratégie, ligne éditoriale, audits et rapports, souvent dans des documents éparpillés, pour plusieurs marques à la fois.",
+      en: "Community managers juggle strategy, editorial lines, audits and reports, often in scattered documents, for several brands at once.",
+    },
+    response: {
+      fr: "Une plateforme web qui réunit tout au même endroit, avec l'IA pour préparer la stratégie de marque, le calendrier éditorial, l'audit et le reporting, des comptes par abonnement et le paiement Mobile Money.",
+      en: "A web platform that brings everything together, with AI to prepare brand strategy, editorial calendar, audits and reporting, subscription accounts and Mobile Money payment.",
+    },
+    result: {
+      fr: "Une application en ligne, du design à l'exploitation : comptes, paliers, paiements, sauvegardes et contrôles de sécurité.",
+      en: "A live application, from design to operations: accounts, tiers, payments, backups and security checks.",
+    },
+  },
+  gescom: {
+    challenge: {
+      fr: "Civ'Art suivait ses prospects sur WhatsApp et ses devis à la main : difficile de savoir qui relancer, ce qui reste à encaisser, et impossible de travailler sans réseau.",
+      en: "Civ'Art tracked leads on WhatsApp and quotes by hand: hard to know who to follow up, what is left to collect, and no way to work offline.",
+    },
+    response: {
+      fr: "Un CRM sur mesure, installable sur téléphone et ordinateur, qui fonctionne hors ligne et se synchronise tout seul : parcours client, devis et pro-forma, factures numérotées, paiements, reçus et projets.",
+      en: "A custom CRM, installable on phone and desktop, that works offline and syncs on its own: sales pipeline, quotes and pro-formas, numbered invoices, payments, receipts and projects.",
+    },
+    result: {
+      fr: "L'outil de gestion quotidien du studio, du premier message au paiement, avec des PDF partagés directement sur WhatsApp.",
+      en: "The studio's day-to-day management tool, from first message to payment, with PDFs shared straight to WhatsApp.",
+    },
+  },
+  aquapay: {
+    challenge: {
+      fr: "Recharger un compteur d'eau prépayé demande souvent de se déplacer et d'attendre, sans visibilité sur sa consommation.",
+      en: "Topping up a prepaid water meter often means travelling and queuing, with no visibility on consumption.",
+    },
+    response: {
+      fr: "Une application mobile pour payer en Mobile Money, recevoir son code de recharge, suivre ses compteurs et demander une installation, accompagnée d'un site qui explique le service en trois étapes.",
+      en: "A mobile app to pay with Mobile Money, receive a top-up code, track meters and request an installation, plus a website explaining the service in three steps.",
+    },
+    result: {
+      fr: "Une application et un site en cours de finalisation, conçus pour un usage simple sur téléphone.",
+      en: "An app and a website being finalised, designed for simple use on a phone.",
+    },
+  },
+  prixci: {
+    challenge: {
+      fr: "À Abidjan, il est difficile de savoir où acheter au bon prix, et une application participative est vide le premier jour.",
+      en: "In Abidjan it is hard to know where to buy at the right price, and a crowd-sourced app is empty on day one.",
+    },
+    response: {
+      fr: "Une application mobile qui fonctionne d'abord hors ligne, avec les prix de référence officiels embarqués, les commerces proches et des signalements validés par plusieurs utilisateurs.",
+      en: "An offline-first mobile app with official reference prices built in, nearby shops and reports validated by several users.",
+    },
+    result: {
+      fr: "Une application utile dès la première ouverture, même sans connexion.",
+      en: "An app that is useful from the first launch, even without a connection.",
+    },
+  },
+  ivert: {
+    challenge: {
+      fr: "Les producteurs de cacao et d'anacarde repèrent souvent les maladies trop tard, dans des zones où le réseau est rare.",
+      en: "Cocoa and cashew farmers often spot diseases too late, in areas where network coverage is rare.",
+    },
+    response: {
+      fr: "Une application qui reconnaît les maladies à partir d'une simple photo de la plante, grâce à un modèle d'IA entraîné pour l'occasion et exécuté directement sur le téléphone.",
+      en: "An app that recognises diseases from a single photo of the plant, with an AI model trained for the purpose and running directly on the phone.",
+    },
+    result: {
+      fr: "Un diagnostic immédiat, sans connexion, avec des maquettes Figma qui guident l'utilisateur pas à pas.",
+      en: "An instant diagnosis, offline, with Figma designs that guide the user step by step.",
+    },
+  },
+  "ong-aicha": {
+    challenge: {
+      fr: "L'ONG AICHA devait présenter ses actions à des publics différents et recevoir des dons en ligne en toute confiance.",
+      en: "ONG AICHA needed to present its work to different audiences and receive online donations with confidence.",
+    },
+    response: {
+      fr: "Un site en trois langues (français, anglais, arabe) avec dons en ligne, parrainage et un espace d'administration pour mettre à jour les contenus sans développeur.",
+      en: "A website in three languages (French, English, Arabic) with online donations, sponsorship and an admin area to update content without a developer.",
+    },
+    result: {
+      fr: "Un site en ligne, rapide sur mobile, avec des contenus modifiables par l'équipe de l'ONG.",
+      en: "A live website, fast on mobile, with content the NGO team can edit.",
+    },
+  },
+  "novembre-bleu": {
+    challenge: {
+      fr: "Le cancer de la prostate reste un sujet tabou : beaucoup d'hommes ne connaissent pas les signes d'alerte et repoussent la consultation.",
+      en: "Prostate cancer remains a taboo topic: many men do not know the warning signs and put off seeing a doctor.",
+    },
+    response: {
+      fr: "Une vidéo d'une minute pour Novembre Bleu, avec l'ONG AICHA : briser le silence, montrer trois signes d'alerte, encourager la consultation et mobiliser les proches.",
+      en: "A one-minute video for Blue November, with ONG AICHA: break the silence, show three warning signs, encourage a check-up and get loved ones involved.",
+    },
+    result: {
+      fr: "Une vidéo d'une minute, prête à diffuser sur les réseaux de l'ONG et de ses partenaires.",
+      en: "A one-minute video, ready to share on the NGO's and its partners' social networks.",
+    },
+  },
+};
