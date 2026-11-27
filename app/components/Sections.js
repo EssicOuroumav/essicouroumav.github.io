@@ -136,6 +136,9 @@ export function Contact() {
           <a className="btn glass" href={profile.whatsapp} target="_blank" rel="noopener noreferrer">
             <BrandIcon name="whatsapp" size={18} color="currentColor" /> WhatsApp
           </a>
+          <a className="btn glass" href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+            <BrandIcon name="linkedin" size={18} color="currentColor" /> LinkedIn
+          </a>
           <a className="btn glass" href={profile.behance} target="_blank" rel="noopener noreferrer">
             <BrandIcon name="behance" size={18} color="currentColor" /> Behance
           </a>
@@ -162,6 +165,12 @@ export function Footer() {
         </div>
         <div>
           <h3 className="mono">{t.footSocial}</h3>
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+          <a href={profile.civart} target="_blank" rel="noopener noreferrer">
+            Civ&apos;Art
+          </a>
           <a href={profile.behance} target="_blank" rel="noopener noreferrer">
             Behance
           </a>

@@ -756,6 +756,29 @@ h3 {
   transition: transform 0.25s ease;
 }
 
+.nx-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.nx-quote {
+  display: inline-flex;
+  align-items: center;
+  padding: 16px 24px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.25s ease;
+}
+
+.nx-quote:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
 .nx-cta:hover {
   transform: translateY(-2px);
 }

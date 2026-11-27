@@ -10,6 +10,7 @@ export const profile = {
   whatsappLabel: "+225 07 77 54 36 48",
   civart: "https://linktr.ee/civart.ci",
   behance: "https://www.behance.net/essicouroumav",
+  linkedin: "https://www.linkedin.com/in/cisse-vamourou-a5a689132/",
   photo: "/images/cisse-avatar.jpg",
   experienceYears: 3,
   coords: "5.36° N · 4.01° W",
@@ -22,7 +23,7 @@ export const categories = ["web", "uiux", "motion", "branding", "print"];
 export const services = [
   {
     key: "graphic",
-    title: { fr: "Graphic Design", en: "Graphic Design" },
+    title: { fr: "Design graphique", en: "Graphic design" },
     desc: {
       fr: "Affiches, flyers, carrousels et supports print qui captent l'attention et respectent votre identité.",
       en: "Posters, flyers, carousels and print materials that grab attention and stay true to your identity.",
@@ -31,7 +32,7 @@ export const services = [
   },
   {
     key: "uiux",
-    title: { fr: "UI/UX Design", en: "UI/UX Design" },
+    title: { fr: "Design UI/UX", en: "UI/UX design" },
     desc: {
       fr: "Des interfaces claires et évolutives pour applications mobiles, tableaux de bord et sites web, conçues sur Figma.",
       en: "Clear, scalable interfaces for mobile apps, dashboards and websites, designed in Figma.",
@@ -40,7 +41,7 @@ export const services = [
   },
   {
     key: "web",
-    title: { fr: "Web Design & Dev", en: "Web Design & Dev" },
+    title: { fr: "Sites et applications web", en: "Web design & development" },
     desc: {
       fr: "Sites et applications web rapides, du design au déploiement, développés avec l'IA (Claude Code).",
       en: "Fast websites and web apps, from design to deployment, built with AI (Claude Code).",
@@ -49,7 +50,7 @@ export const services = [
   },
   {
     key: "motion",
-    title: { fr: "Motions & Animations", en: "Motions & Animations" },
+    title: { fr: "Motion design & vidéo", en: "Motion design & video" },
     desc: {
       fr: "Vidéos promotionnelles, motion design et titres animés montés sur DaVinci Resolve.",
       en: "Promotional videos, motion design and animated titles edited in DaVinci Resolve.",
@@ -58,7 +59,7 @@ export const services = [
   },
   {
     key: "social",
-    title: { fr: "Gestion des réseaux sociaux", en: "Social Media Management" },
+    title: { fr: "Gestion des réseaux sociaux", en: "Social media management" },
     desc: {
       fr: "Ligne éditoriale, publications, animation de communauté et suivi des performances (Meta Business Suite).",
       en: "Editorial planning, publishing, community management and performance tracking (Meta Business Suite).",
@@ -402,6 +403,15 @@ export const tools = [
 
 export const journey = [
   {
+    when: { fr: "Aujourd'hui", en: "Present" },
+    title: { fr: "Fondateur de Civ'Art", en: "Founder of Civ'Art" },
+    place: { fr: "Studio créatif, Port-Bouët (Abidjan)", en: "Creative studio, Port-Bouët (Abidjan)" },
+    desc: {
+      fr: "Identités visuelles, sites, vidéos et gestion des réseaux sociaux pour des marques, des ONG et des entrepreneurs (Nova Dermax, O'Braisé chez Camara, ONG AICHA…), avec GESCOM, l'outil de gestion du studio.",
+      en: "Visual identities, websites, videos and social media management for brands, NGOs and entrepreneurs (Nova Dermax, O'Braisé chez Camara, ONG AICHA…), with GESCOM, the studio's management tool.",
+    },
+  },
+  {
     when: { fr: "2021 – aujourd'hui", en: "2021 – present" },
     title: { fr: "Designer graphique & Community Manager", en: "Graphic Designer & Community Manager" },
     place: { fr: "ONG AICHA, Port-Bouët (bénévolat)", en: "ONG AICHA, Port-Bouët (volunteer)" },
@@ -422,7 +432,7 @@ export const journey = [
   {
     when: { fr: "Projets", en: "Projects" },
     title: { fr: "Kerya et Wina Services", en: "Kerya and Wina Services" },
-    place: { fr: "Projets créatifs", en: "Creative projects" },
+    place: { fr: "Plateforme de formation (Kerya) · programme de coaching (Wina Services)", en: "Training platform (Kerya) · coaching program (Wina Services)" },
     desc: {
       fr: "Conception d'une plateforme de formation au Prompt Engineering, et supports de branding personnel et contenus pédagogiques pour un programme de coaching en 6 modules.",
       en: "Built a Prompt Engineering training platform, and created personal branding materials and course content for a 6-module coaching program.",

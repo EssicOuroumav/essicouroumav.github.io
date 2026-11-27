@@ -5,7 +5,7 @@ import { profile, projects, tools } from "../data";
 import { useLang } from "../i18n";
 import { withBase } from "../base";
 
-const spotlight = projects.find((p) => p.key === "aquapay") || projects[0];
+const spotlight = projects.find((p) => p.key === "markodience") || projects[0];
 
 // Le portrait s'incline légèrement vers le pointeur (valeurs lissées, écrites en variables CSS).
 function usePointerTilt(rootRef) {
@@ -90,12 +90,18 @@ export default function Hero() {
             {t.heroTitle}
           </h1>
           <p className="nx-lead">{t.heroLead}</p>
-          <a className="nx-cta" href={withBase("/projets/")}>
+          <div className="nx-ctas">
+            <a className="nx-cta" href={withBase("/projets/")}>
             {t.ctaWork}
             <span className="nx-cta-ico">
               <ArrowRight size={16} aria-hidden="true" />
             </span>
           </a>
+            <a className="nx-quote" href={`${profile.whatsapp}?text=${encodeURIComponent(t.quoteMsg)}`} target="_blank" rel="noopener noreferrer">
+              {t.quote}
+              <span className="sr-only"> {t.newTab}</span>
+            </a>
+          </div>
           <div className="nx-proof">
             <ul>
               {tools.slice(0, 3).map((tool) => (

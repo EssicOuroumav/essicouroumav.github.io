@@ -93,3 +93,10 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 - 2026-11-27 (suite) : à la demande du propriétaire (référence adelynnemalubay), visuels des 4 sites refaits en « page entière » : capture complète par Playwright (1440 px de large, toute la hauteur), assemblée en 1600 × 1200 (grande colonne pour le haut, le reste de la page à droite ; une colonne centrée pour les pages courtes). AquaPay : aquapay.vercel.app n'est pas le site du propriétaire (page espagnole « Bienvenido ») ; site capturé en local (npm run dev, sans modifier le projet). Étiquettes d'outils sur fond lavande.
 - 2026-11-27 : Kateni : nouvelle capture fournie par le propriétaire (page Calendrier, après sa refonte) ; boutons réservés au propriétaire (Share, GitHub, « Manage app ») retirés ; carte en visuel image au lieu du logo.
 - 2026-11-27 (fin) : le propriétaire voulait simplement le site bord à bord, comme la référence : zone image des cartes passée en 16:10, et pour les 4 sites le premier écran (1440 × 900) sans fond ni cadre ni colonnes. L'assemblage en colonnes est abandonné.
+
+## v9.1 (2026-11-27) : corrections après l'audit
+- Parcours : « Fondateur de Civ'Art » en tête (date de création inconnue : affiché « Aujourd'hui ») ; Kerya / Wina Services expliqués.
+- Services : noms en français dans la version FR, anglais correct (« Motion design & video » au lieu de « Motions & Animations »).
+- Projet à la une : Markodience (en ligne) à la place d'AquaPay (pas encore en ligne).
+- LinkedIn ajouté au contact et au pied de page ; Civ'Art (Linktree) dans le pied de page.
+- Bouton « Devis gratuit » dans l'accueil : WhatsApp avec message prérempli.
