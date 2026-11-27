@@ -1158,11 +1158,16 @@ main {
 }
 
 .pcard-tags li {
-  padding: 4px 10px;
+  padding: 5px 11px;
   border-radius: 999px;
-  border: 1px solid var(--line);
+  background: var(--accent-soft);
   font-size: 12px;
-  color: var(--muted);
+  font-weight: 500;
+  color: var(--accent-text);
+}
+
+[data-theme="dark"] .pcard-tags li {
+  background: rgba(185, 166, 245, 0.12);
 }
 
 .pcard-actions {
