@@ -199,6 +199,7 @@ export function Footer() {
           <h3 className="mono">{t.footLinks}</h3>
           <a href={withBase("/")}>{t.nav[0]}</a>
           <a href={withBase("/projets/")}>{t.nav[1]}</a>
+          <a href={withBase("/design-graphique/")}>{t.nav[2]}</a>
           <a href={withBase("/mentions-legales/")}>{t.legal}</a>
         </div>
       </div>

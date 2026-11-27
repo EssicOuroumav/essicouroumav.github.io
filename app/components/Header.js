@@ -4,7 +4,7 @@ import { useLang } from "../i18n";
 import { withBase } from "../base";
 import { LangSwitch, LiveClock, ThemeToggle } from "./ui";
 
-const links = ["/#top", "/projets/", "/#journey", "/#contact"];
+const links = ["/#top", "/projets/", "/design-graphique/", "/#journey", "/#contact"];
 
 // Barre du haut en pilules (comme la référence) ; posée sur le hero rouge de l'accueil.
 export default function Header() {
@@ -15,7 +15,7 @@ export default function Header() {
         <a href={withBase("/")} className="avatar" aria-label={profile.name}>
           <img src={withBase(profile.photo)} alt="" width="80" height="80" />
         </a>
-        {links.slice(0, 3).map((href, i) => (
+        {links.slice(0, 4).map((href, i) => (
           <a key={href} className="pill" href={withBase(href)}>
             {t.nav[i]}
           </a>
@@ -45,8 +45,8 @@ export default function Header() {
         <span className="pill ghost clock mono">
           ABJ <LiveClock timeZone={profile.timeZone} />
         </span>
-        <a className="pill" href={withBase(links[3])}>
-          {t.nav[3]}
+        <a className="pill" href={withBase(links[4])}>
+          {t.nav[4]}
         </a>
         <LangSwitch />
         <ThemeToggle />

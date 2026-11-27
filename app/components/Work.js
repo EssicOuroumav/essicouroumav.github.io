@@ -118,6 +118,20 @@ export function ProjectsGrid() {
         <h1 className="pp-title">{t.workH}</h1>
         <p className="sec-intro">{t.projectsIntro}</p>
       </div>
+      <a className="dg-cta" href={withBase("/design-graphique/")} data-cursor="view">
+        <span className="dg-cta-pics" aria-hidden="true">
+          {designPreview.map((src) => (
+            <img key={src} src={withBase(src)} alt="" width="160" height="200" loading="lazy" />
+          ))}
+        </span>
+        <span className="dg-cta-text">
+          <b>{t.designCta}</b>
+          <small>
+            {t.designCtaSub} · {designCount}
+          </small>
+        </span>
+        <ArrowRight size={22} aria-hidden="true" />
+      </a>
       <div className="filters" role="group" aria-label={t.filtersLabel}>
         {["all", ...used].map((c) => {
           const count = c === "all" ? projects.length : projects.filter((p) => p.category === c).length;
@@ -133,20 +147,6 @@ export function ProjectsGrid() {
           <GlassCard key={p.key} p={p} />
         ))}
       </div>
-      <a className="dg-cta" href={withBase("/design-graphique/")} data-cursor="view">
-        <span className="dg-cta-pics" aria-hidden="true">
-          {designPreview.map((src) => (
-            <img key={src} src={withBase(src)} alt="" width="160" height="200" loading="lazy" />
-          ))}
-        </span>
-        <span className="dg-cta-text">
-          <b>{t.designCta}</b>
-          <small>
-            {t.designCtaSub} · {designCount}
-          </small>
-        </span>
-        <ArrowRight size={22} aria-hidden="true" />
-      </a>
     </section>
   );
 }

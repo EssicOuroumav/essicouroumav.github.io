@@ -1500,39 +1500,29 @@ main {
 }
 
 .dg-grid {
-  --ratio: 3 / 4;
-  --col: 230px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(var(--col), 100%), 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 28px 24px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-
-
-.dg-square {
-  --ratio: 1 / 1;
-  --col: 240px;
-}
-
-.dg-landscape {
-  --ratio: 4 / 3;
-  --col: 320px;
-}
-
-
 .dg-tall {
-  --ratio: 1 / 2.4;
-  --col: 170px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .dg-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .dg-card {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
   padding: 0;
   border: 1px solid var(--line);
   border-radius: 20px;
@@ -1552,25 +1542,15 @@ main {
 }
 
 .dg-media {
-  display: grid;
-  place-items: center;
-  aspect-ratio: var(--ratio);
-  padding: 10px;
-  background: var(--accent-soft);
+  display: block;
   overflow: hidden;
-}
-
-[data-theme="dark"] .dg-media {
-  background: rgba(185, 166, 245, 0.08);
+  background: var(--accent-soft);
 }
 
 .dg-media img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
+  display: block;
+  width: 100%;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 10px 24px -16px rgba(20, 17, 24, 0.55);
   transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
@@ -1704,7 +1684,7 @@ main {
   display: flex;
   align-items: center;
   gap: 22px;
-  margin-top: 48px;
+  margin-top: 40px;
   padding: 18px 26px 18px 18px;
   border-radius: 24px;
   border: 1px solid var(--line);
@@ -1760,16 +1740,12 @@ main {
 
 @media (max-width: 640px) {
   .dg-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .dg-landscape {
     grid-template-columns: 1fr;
+    gap: 18px;
   }
 
-  .dg-media {
-    padding: 6px;
+  .dg-tall {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .dg-card {
@@ -2309,7 +2285,7 @@ main {
   }
 }
 
-@media (max-width: 1320px) {
+@media (max-width: 1500px) {
   .founder-pill {
     display: none;
   }

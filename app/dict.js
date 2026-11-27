@@ -1,7 +1,7 @@
 // Textes de l'interface. Les deux langues doivent avoir exactement les mêmes clés (vérifié par scripts/check.mjs).
 export const dict = {
   fr: {
-    nav: ["Accueil", "Projets", "Parcours", "Contact"],
+    nav: ["Accueil", "Projets", "Design", "Parcours", "Contact"],
     menuLabel: "Navigation principale",
     themeLight: "Passer en mode clair",
     themeDark: "Passer en mode sombre",
@@ -95,7 +95,7 @@ export const dict = {
     next: "Projet suivant",
   },
   en: {
-    nav: ["Home", "Work", "Journey", "Contact"],
+    nav: ["Home", "Work", "Design", "Journey", "Contact"],
     menuLabel: "Main navigation",
     themeLight: "Switch to light mode",
     themeDark: "Switch to dark mode",
