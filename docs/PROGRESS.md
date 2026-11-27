@@ -106,3 +106,4 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 - Visuels issus du dossier `design` du Bureau, convertis en WebP (1400 px max, 2000 px pour les kakémonos), 14 Mo au total ; première page des PDF ; un doublon écarté. Données dans `app/designs.js`.
 - Compétences : cartes au format des projets (visuel dégagé, texte sur fond clair) avec un lien « Voir les réalisations » (Design graphique vers la galerie, les autres vers les filtres de /projets/).
 - Bandeau vers la galerie en bas de /projets/ ; page ajoutée au sitemap et à `scripts/check.mjs`.
+- Galerie réorganisée : une section par catégorie (titre, nombre, description), puis quatre familles de formats (verticaux, carrés, horizontaux, grand format vertical), chacune en grille régulière. Chaque visuel a un titre, un client et sa nature (affiche, bannière, mise en situation, menu...). Données : `client`, `title`, `k`, `f` dans `app/designs.js`.
