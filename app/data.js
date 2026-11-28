@@ -114,8 +114,8 @@ export const projects = [
     image: "/images/projects/gescom.jpg",
     tags: ["Next.js", "Supabase", "PWA hors ligne"],
     desc: {
-      fr: "CRM de Civ'Art, du premier message au paiement : contacts et parcours client, devis, factures, paiements et projets, sur ordinateur et téléphone, même sans réseau.",
-      en: "Civ'Art's CRM, from first message to payment: contacts and sales pipeline, quotes, invoices, payments and projects, on desktop and phone, even offline.",
+      fr: "Le CRM de Civ'Art réunit contacts et parcours client, devis, factures, paiements et projets, sur ordinateur et téléphone, avec ou sans connexion.",
+      en: "Civ'Art's CRM brings together contacts and sales pipeline, quotes, invoices, payments and projects, on desktop and phone, with or without a connection.",
     },
     demo: true,
     links: {},
@@ -456,48 +456,6 @@ export const certifications = [
 // Récit des projets phares sur leur page détail : le défi, la réponse, le résultat.
 // Textes rédigés d'après les projets eux-mêmes, à faire valider par le propriétaire.
 export const stories = {
-  markodience: {
-    challenge: {
-      fr: "Les community managers jonglent entre stratégie, ligne éditoriale, audits et rapports, souvent dans des documents éparpillés, pour plusieurs marques à la fois.",
-      en: "Community managers juggle strategy, editorial lines, audits and reports, often in scattered documents, for several brands at once.",
-    },
-    response: {
-      fr: "Une plateforme web qui réunit tout au même endroit, avec l'IA pour préparer la stratégie de marque, le calendrier éditorial, l'audit et le reporting, des comptes par abonnement et le paiement Mobile Money.",
-      en: "A web platform that brings everything together, with AI to prepare brand strategy, editorial calendar, audits and reporting, subscription accounts and Mobile Money payment.",
-    },
-    result: {
-      fr: "Une application en ligne, du design à l'exploitation : comptes, paliers, paiements, sauvegardes et contrôles de sécurité.",
-      en: "A live application, from design to operations: accounts, tiers, payments, backups and security checks.",
-    },
-  },
-  gescom: {
-    challenge: {
-      fr: "Civ'Art suivait ses prospects sur WhatsApp et ses devis à la main : difficile de savoir qui relancer, ce qui reste à encaisser, et impossible de travailler sans réseau.",
-      en: "Civ'Art tracked leads on WhatsApp and quotes by hand: hard to know who to follow up, what is left to collect, and no way to work offline.",
-    },
-    response: {
-      fr: "Un CRM sur mesure, installable sur téléphone et ordinateur, qui fonctionne hors ligne et se synchronise tout seul : parcours client, devis et pro-forma, factures numérotées, paiements, reçus et projets.",
-      en: "A custom CRM, installable on phone and desktop, that works offline and syncs on its own: sales pipeline, quotes and pro-formas, numbered invoices, payments, receipts and projects.",
-    },
-    result: {
-      fr: "L'outil de gestion quotidien du studio, du premier message au paiement, avec des PDF partagés directement sur WhatsApp.",
-      en: "The studio's day-to-day management tool, from first message to payment, with PDFs shared straight to WhatsApp.",
-    },
-  },
-  aquapay: {
-    challenge: {
-      fr: "Recharger un compteur d'eau prépayé demande souvent de se déplacer et d'attendre, sans visibilité sur sa consommation.",
-      en: "Topping up a prepaid water meter often means travelling and queuing, with no visibility on consumption.",
-    },
-    response: {
-      fr: "Une application mobile pour payer en Mobile Money, recevoir son code de recharge, suivre ses compteurs et demander une installation, accompagnée d'un site qui explique le service en trois étapes.",
-      en: "A mobile app to pay with Mobile Money, receive a top-up code, track meters and request an installation, plus a website explaining the service in three steps.",
-    },
-    result: {
-      fr: "Une application et un site en cours de finalisation, conçus pour un usage simple sur téléphone.",
-      en: "An app and a website being finalised, designed for simple use on a phone.",
-    },
-  },
   prixci: {
     challenge: {
       fr: "À Abidjan, il est difficile de savoir où acheter au bon prix, et une application participative est vide le premier jour.",

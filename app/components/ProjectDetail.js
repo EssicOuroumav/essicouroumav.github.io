@@ -1,6 +1,7 @@
 "use client";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
 import { projects, stories } from "../data";
+import { caseStudies } from "../stories";
 import { tints } from "../tints";
 import { useLang } from "../i18n";
 import { withBase } from "../base";
@@ -14,6 +15,7 @@ export default function ProjectDetail({ slug }) {
   const title = tr(p.title);
   const links = projectLinks(p, t, title);
   const story = stories[p.key];
+  const study = caseStudies[p.key];
   const others = [...projects.filter((x) => x.category === p.category && x.key !== p.key), ...projects.filter((x) => x.category !== p.category)].slice(0, 3);
 
   return (
@@ -26,6 +28,7 @@ export default function ProjectDetail({ slug }) {
         <span>{tr(p.client)}</span>
       </p>
       <h1 className="pd-title">{title}</h1>
+      {study && <p className="pd-tagline">{tr(study.tagline)}</p>}
       <p className="pd-lead">{tr(p.desc)}</p>
 
       <div className="pd-grid">
@@ -33,6 +36,20 @@ export default function ProjectDetail({ slug }) {
           <ProjectVisual p={p} title={title} eager />
         </div>
         <aside className="pd-side">
+          {study && (
+            <dl className="pd-facts">
+              {[
+                [t.factRole, tr(study.facts.role)],
+                [t.factYear, study.facts.year],
+                [t.factStatus, tr(study.facts.status)],
+              ].map(([k, v]) => (
+                <div key={k}>
+                  <dt>{k}</dt>
+                  <dd>{v}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
           <h2>{t.toolsUsed}</h2>
           <ul className="pcard-tags">
             {p.tags.map((tag) => (
@@ -54,6 +71,30 @@ export default function ProjectDetail({ slug }) {
           )}
         </aside>
       </div>
+
+      {study && (
+        <section className="pd-story" aria-labelledby="pd-case-title">
+          <p className="kicker mono">{t.caseKicker}</p>
+          <h2 id="pd-case-title">{t.caseTitle}</h2>
+          <ol className="pd-chapters">
+            {study.chapters.map((c, i) => (
+              <li key={c.h.fr}>
+                <span className="mono" aria-hidden="true">0{i + 1}</span>
+                <h3>{tr(c.h)}</h3>
+                <p>{tr(c.p)}</p>
+              </li>
+            ))}
+          </ol>
+          <h3 className="pd-feat-title">{t.caseFeatures}</h3>
+          <ul className="pd-feats">
+            {study.features.map((f) => (
+              <li key={f.fr}>
+                <Check size={18} aria-hidden="true" /> {tr(f)}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {story && (
         <section className="pd-story" aria-labelledby="pd-story-title">

@@ -108,3 +108,7 @@ Plan validé le 2026-10-30. Next.js 15.5 export statique → GitHub Pages, dép�
 - Bandeau vers la galerie en bas de /projets/ ; page ajoutée au sitemap et à `scripts/check.mjs`.
 - Galerie réorganisée : une section par catégorie (titre, nombre, description), puis quatre familles de formats (verticaux, carrés, horizontaux, grand format vertical), chacune en grille régulière. Chaque visuel a un titre, un client et sa nature (affiche, bannière, mise en situation, menu...). Données : `client`, `title`, `k`, `f` dans `app/designs.js`.
 - Galerie plus visible : entrée « Design » dans le menu et le pied de page, bandeau en haut de /projets/. Cartes agrandies : 3 par ligne (4 pour les grands formats verticaux, 2 sous 900 px, 1 sur mobile), image entière à ses propres proportions. Pastille Civ'Art compacte sous 1500 px pour laisser la place au menu.
+
+## v9.3 (2026-11-28) : récits de projets
+- Markodience, GESCOM et AquaPay : accroche, fiche (rôle, année, statut), récit en quatre chapitres et fonctions (`app/stories.js`). Les quatre autres récits gardent la forme défi / réponse / résultat.
+- Faits tirés de la documentation des projets ; aucun partenaire ni donnée interne cités.
